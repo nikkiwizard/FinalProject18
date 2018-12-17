@@ -1,9 +1,4 @@
-# Intro to Programming Final Project - Fall 2018
+# Welcome to the Ikea Adventure!
 
-* Project details are in description.md
-* Replace the content of this file with your own info about your project before the due date
-* Don't forget to fill out the [Project Proposal Form](https://airtable.com/shrrdA41unoBvi6Ki) before break.
-
-## Setting Up Your Repo
-
-On the GitHub page for this repository, click the "Fork" button. This will create your own copy of this repository, linked to my original. Use the same cloning method we used before to clone the repository to your PythonAnywhere account
+*It starts as a lovely day for furniture shopping. Little do you know you may be stuck there forever...
+*Fight your way through the department store to escape! Or become an employee there for the rest of time.
