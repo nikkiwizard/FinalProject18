@@ -11,26 +11,27 @@ blue = (20,0,249)
 display = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption("Ikea Adventure")
 clock = pygame.time.Clock()
-background_img = pygame.image.load("Opening_Background.png")
+clock.tick(30)
+
+op_background_img = pygame.image.load("Opening_Background.png")
 user_img = pygame.image.load("Main_Sprite_v2.png")
 narrator_img = pygame.image.load("Narrator_Box.png")
 
 def user_pic(x,y):
   display.blit(user_img, (x,y))
 
-def text_objects(text,font):
+x = display_width * 0.3
+y = display_height * 0.4
+
+def text_messages(text,font):
   text_surface = font.render(text, True, blue)
   return text_surface, text_surface.get_rect()
 
 def message_display(text):
-  words = pygame.font.Font("courier.ttf", 35)
-  text_surf, text_rectangle = text_objects(text, words)
-  text_rectangle.center = ((display_height*0.5),(display_width*0.5))
-  display.blit(text_surf, text_rectangle)
-
-x = display_width * 0.3
-y = display_height * 0.4
-
+  words = pygame.font.Font("courier.ttf", 22)
+  text_surf, text_rectangle = text_messages(text, words)
+  text_rectangle.center = (70,390)
+  display.blit(text_surf, text_rectangle.center)
 
 escaped = False
 
@@ -39,12 +40,10 @@ while not escaped:
     if event.type == pygame.QUIT:
       escaped = True
 
-  display.blit(background_img, (0,0))
-  display.blit(user_img, (x,y))
-  display.blit(narrator_img, (0,(display_height-200)))
-  message_display("Hello World")
+  display.blit(op_background_img,(0,0))
+  display.blit(narrator_img, (0,300))
+  message_display("It was a bright and sunny day")
   pygame.display.update()
-
 
 #class Player:
  # def __init__(self, name):
@@ -92,33 +91,28 @@ while not escaped:
    # self.defense = 15
     #self.health = 60
 
-'''
-inventory = {
-  "map": 1
-}
 
-nombre = input("What is your name?: ")
+#inventory = {
+#  "map": 1
+#}
 
-user = Player(nombre)
-print(f"Welcome {user.name}!")
-print("\n")
+#nombre = input("What is your name?: ")
 
-print("It was a bright and sunny day in the land of ____")
-time.sleep(2)
-print("You decided to buy some miscellaneous furniture to decorate your new apartment")
-time.sleep(2)
-print("You arrive at Ikea, the most magical place ever")
-time.sleep(3)
-print("\n")
+#user = Player(nombre)
+#print(f"Welcome {user.name}!")
+#print("\n")
 
-print("Maybe too magical...")
-time.sleep(2)
-print("You end up wandering around too much")
-time.sleep(.5)
-print("Several annoying ankle biters decide to bother you")
-time.sleep(3)
+#print("It was a bright and sunny day in the land of ____")
+#time.sleep(2)
+#print("You decided to buy some miscellaneous furniture to decorate your new apartment")
+#time.sleep(2)
+#print("You arrive at Ikea, the most magical place ever")
+#time.sleep(3)
+#print("\n")
 
-child_1 = Child()
-child_2 = Child()
-child_3 = Child()
-'''
+#print("Maybe too magical...")
+#time.sleep(2)
+#print("You end up wandering around too much")
+#time.sleep(.5)
+#print("Several annoying ankle biters decide to bother you")
+#time.sleep(3)
