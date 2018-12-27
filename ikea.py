@@ -6,14 +6,31 @@ pygame.init()
 display_width = 800
 display_height = 500
 
-black = (0, 0, 0)
-white = (255, 255, 255)
-
+blue = (20,0,249)
 
 display = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption("Ikea Adventure")
 clock = pygame.time.Clock()
 background_img = pygame.image.load("Opening_Background.png")
+user_img = pygame.image.load("Main_Sprite_v2.png")
+narrator_img = pygame.image.load("Narrator_Box.png")
+
+def user_pic(x,y):
+  display.blit(user_img, (x,y))
+
+def text_objects(text,font):
+  text_surface = font.render(text, True, blue)
+  return text_surface, text_surface.get_rect()
+
+def message_display(text):
+  words = pygame.font.Font("courier.ttf", 35)
+  text_surf, text_rectangle = text_objects(text, words)
+  text_rectangle.center = ((display_height*0.5),(display_width*0.5))
+  display.blit(text_surf, text_rectangle)
+
+x = display_width * 0.3
+y = display_height * 0.4
+
 
 escaped = False
 
@@ -23,7 +40,11 @@ while not escaped:
       escaped = True
 
   display.blit(background_img, (0,0))
+  display.blit(user_img, (x,y))
+  display.blit(narrator_img, (0,(display_height-200)))
+  message_display("Hello World")
   pygame.display.update()
+
 
 #class Player:
  # def __init__(self, name):
