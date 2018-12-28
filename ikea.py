@@ -1,33 +1,46 @@
+#import modules
 import time
 import pygame
 
+#initialize pygame
 pygame.init()
 
+#color variables
+blue = (20,0,249)
+
+#window variables
 display_width = 800
 display_height = 500
 
-blue = (20,0,249)
-
+#window display
 display = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption("Ikea Adventure")
+
+#clock and frames
 clock = pygame.time.Clock()
 clock.tick(30)
 
+#image loading
 op_background_img = pygame.image.load("Opening_Background.png")
 user_img = pygame.image.load("Main_Sprite_v2.png")
 narrator_img = pygame.image.load("Narrator_Box.png")
 
-def user_pic(x,y):
-  display.blit(user_img, (x,y))
-
+#user sprite coordinates
 x = display_width * 0.3
 y = display_height * 0.4
 
+def user_pic(x,y):
+  '''Where to place the user sprite '''
+  display.blit(user_img, (x,y))
+
 def text_messages(text,font):
+  '''Render the text in color and return the rectangle'''
   text_surface = font.render(text, True, blue)
   return text_surface, text_surface.get_rect()
 
 def message_display(text):
+  '''Set up the text with font and rectangle center'''
+  '''This one blits the actual text'''
   words = pygame.font.Font("courier.ttf", 22)
   text_surf, text_rectangle = text_messages(text, words)
   text_rectangle.center = (70,390)
@@ -35,6 +48,7 @@ def message_display(text):
 
 escaped = False
 
+#game loop
 while not escaped:
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
@@ -44,6 +58,9 @@ while not escaped:
   display.blit(narrator_img, (0,300))
   message_display("It was a bright and sunny day")
   pygame.display.update()
+
+pygame.quit()
+quit()
 
 #class Player:
  # def __init__(self, name):
