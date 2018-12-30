@@ -21,9 +21,23 @@ clock = pygame.time.Clock()
 clock.tick(30)
 
 #image loading
-op_background_img = pygame.image.load("Opening_Background.png")
-user_img = pygame.image.load("Main_Sprite_v2.png")
-narrator_img = pygame.image.load("Narrator_Box.png")
+'''main character/user's avatar'''
+user_img = pygame.image.load("Sprites/Main_Sprite_v2.png")
+'''backgrounds and text boxes'''
+op_background = pygame.image.load("Backgrounds/Opening_Background.png")
+storefront = pygame.image.load("Backgrounds/Ikea_Storefront.png")
+narrator_box = pygame.image.load("Backgrounds/Narrator_Box.png")
+dialogue_box = pygame.image.load("Backgrounds/Dialogue_Box.png")
+'''map pictures'''
+living_room = pygame.image.load("Maps/Living_Room.png")
+dining = pygame.image.load("Maps/Dining.png")
+bedroom = pygame.image.load("Maps/Bedrooms.png")
+bedroom_storage = pygame.image.load("Maps/Bedroom_Storage.png")
+bathroom = pygame.image.load("Maps/Bathrooms.png")
+workspaces = pygame.image.load("Maps/Workspaces.png")
+kitchen = pygame.image.load("Maps/Kitchens.png")
+childrens = pygame.image.load("Maps/Children_Section.png")
+final_stage = pygame.image.load("Maps/Exit.png")
 
 #user sprite coordinates
 x = display_width * 0.3
@@ -54,8 +68,8 @@ while not escaped:
     if event.type == pygame.QUIT:
       escaped = True
 
-  display.blit(op_background_img,(0,0))
-  display.blit(narrator_img, (0,300))
+  display.blit(op_background,(0,0))
+  display.blit(narrator_box, (0,300))
   message_display("It was a bright and sunny day")
   pygame.display.update()
 
