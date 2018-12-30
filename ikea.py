@@ -21,14 +21,17 @@ clock = pygame.time.Clock()
 clock.tick(30)
 
 #image loading
-'''main character/user's avatar'''
+'''avatars'''
 user_img = pygame.image.load("Sprites/Main_Sprite_v2.png")
+girl = pygame.image.load("Sprites/Girl_v2.png")
+boy = pygame.image.load("Sprites/Boy_v2.png")
 '''backgrounds and text boxes'''
 op_background = pygame.image.load("Backgrounds/Opening_Background.png")
 storefront = pygame.image.load("Backgrounds/Ikea_Storefront.png")
 narrator_box = pygame.image.load("Backgrounds/Narrator_Box.png")
 dialogue_box = pygame.image.load("Backgrounds/Dialogue_Box.png")
 '''map pictures'''
+entrance = pygame.image.load("Maps/Entrance.png")
 living_room = pygame.image.load("Maps/Living_Room.png")
 dining = pygame.image.load("Maps/Dining.png")
 bedroom = pygame.image.load("Maps/Bedrooms.png")
@@ -39,13 +42,38 @@ kitchen = pygame.image.load("Maps/Kitchens.png")
 childrens = pygame.image.load("Maps/Children_Section.png")
 final_stage = pygame.image.load("Maps/Exit.png")
 
-#user sprite coordinates
-x = display_width * 0.3
-y = display_height * 0.4
+class User(pygame.sprite.Sprite):
+  def __init__(self, name):
+    pygame.sprite.Sprite.__init__(self)
+    self.image = user_img
+    self.name = name
+    self.atk = 1
+    self.defense = 10
+    self.health = 50
 
-def user_pic(x,y):
-  '''Where to place the user sprite '''
-  display.blit(user_img, (x,y))
+  #def describe(self):
+    #'''print out the player's stats'''
+    #print(f"{self.name} has:")
+    #print(f"-HP: {self.health}")
+    #print(f"-Attack: {self.atk}")
+    #print(f"-Defense: {self.defense}")
+    #return
+
+  def attack(self, opponent):
+    '''single attack opponent'''
+    damage = self.atk - (opponent.defense*0.5)
+    opponent.health -= damage
+
+
+class Child(pygame.sprite.Sprite):
+  def __init__(self, image):
+    pygame.sprite.Sprite.__init__(self)
+    self.image = image
+    self.atk = 1
+    self.defense = 0
+    self.health = 3
+
+
 
 def text_messages(text,font):
   '''Render the text in color and return the rectangle'''
@@ -76,32 +104,7 @@ while not escaped:
 pygame.quit()
 quit()
 
-#class Player:
- # def __init__(self, name):
-  #  self.name = name
-   # self.atk = 1
-    #self.defense = 10
-    #self.health = 50
 
-#  def describe(self):
- #   '''print out the player's stats'''
-  #  print(f"{self.name} has:")
-   # print(f"-HP: {self.health}")
-    #print(f"-Attack: {self.atk}")
-   # print(f"-Defense: {self.defense}")
-    #return
-
-#  def attack(self, opponent):
- #   '''single attack obstacles'''
-  #  print("You chose to attack!")
-   # original_opponent_hp = opponent.hp
-    #damage = self.atk - opponent.defense
-
-#class Child:
- # def __init__(self):
-  #  self.atk = 1
-   # self.defense = 0
-    #self.health = 3
 
 #class Employee1:
  # def __init__(self, nombre):
@@ -122,19 +125,6 @@ quit()
    # self.defense = 15
     #self.health = 60
 
-
-#inventory = {
-#  "map": 1
-#}
-
-#nombre = input("What is your name?: ")
-
-#user = Player(nombre)
-#print(f"Welcome {user.name}!")
-#print("\n")
-
-#print("It was a bright and sunny day in the land of ____")
-#time.sleep(2)
 #print("You decided to buy some miscellaneous furniture to decorate your new apartment")
 #time.sleep(2)
 #print("You arrive at Ikea, the most magical place ever")
