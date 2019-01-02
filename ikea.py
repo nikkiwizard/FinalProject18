@@ -6,8 +6,12 @@ import pygame
 pygame.init()
 
 #color variables
+black = (0,0,0)
 blue = (20,0,249)
 black = (0,0,0)
+
+#other variables
+count = 0
 
 #window variables
 display_width = 800
@@ -17,9 +21,8 @@ display_height = 500
 display = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption("Ikea Adventure")
 
-#clock and frames
+#clock
 clock = pygame.time.Clock()
-clock.tick(30)
 
 #image loading
 '''avatars'''
@@ -45,21 +48,12 @@ final_stage = pygame.image.load("Maps/Exit.png")
 
 class User(pygame.sprite.Sprite):
   '''User's class'''
-  def __init__(self, name):
+  def __init__(self):
     pygame.sprite.Sprite.__init__(self)
     self.image = user_img
-    self.name = name
     self.atk = 1
     self.defense = 10
     self.health = 50
-
-  #def describe(self):
-    #'''print out the player's stats'''
-    #print(f"{self.name} has:")
-    #print(f"-HP: {self.health}")
-    #print(f"-Attack: {self.atk}")
-    #print(f"-Defense: {self.defense}")
-    #return
 
   def attack(self, opponent):
     '''single attack opponent'''
@@ -124,6 +118,34 @@ def message_display(text):
   text_rectangle.center = (70,390)
   display.blit(text_surf, text_rectangle.center)
 
+def scene1():
+  '''opening introduction'''
+  display.blit(op_background,(0,0))
+  display.blit(narrator_box, (0,300))
+  message_display("It was a bright and sunny day.")
+
+def scene2():
+  '''opening introduction'''
+  display.blit(op_background, (0,0))
+  display.blit(narrator_box, (0,300))
+  message_display("A perfect day for furniture shopping.")
+
+def scene3():
+  '''Cue Ikea'''
+  display.blit(storefront, (0,0))
+
+def scene4():
+  '''More Introduction'''
+  display.blit(storefront, (0,0)) 
+  display.blit(narrator_box, (0,300))
+  message_display("Ikea: The best place for interior decorating")
+
+def scene5():
+  '''First Map'''
+  display.fill(black)
+  display.blit(entrance, (0,0))
+
+#game loop escape
 escaped = False
 
 #game loop
@@ -132,10 +154,26 @@ while not escaped:
     if event.type == pygame.QUIT:
       escaped = True
 
-  display.blit(op_background,(0,0))
-  display.blit(narrator_box, (0,300))
-  message_display("It was a bright and sunny day")
-  pygame.display.update()
+  clock.tick(7)
+  key = pygame.key.get_pressed()
+
+  if key[pygame.K_SPACE]:
+    count += 1
+    pygame.display.update()
+
+  if count == 0:
+    message_display("Hit SPACE to continue")
+    pygame.display.update()
+  elif count == 1:
+    scene1()
+  elif count == 2:
+    scene2()
+  elif count == 3:
+    scene3()
+  elif count == 4:
+    scene4()
+  elif count == 5:
+    scene5()
 
 pygame.quit()
 quit()
