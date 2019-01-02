@@ -7,6 +7,7 @@ pygame.init()
 
 #color variables
 blue = (20,0,249)
+black = (0,0,0)
 
 #window variables
 display_width = 800
@@ -43,6 +44,7 @@ childrens = pygame.image.load("Maps/Children_Section.png")
 final_stage = pygame.image.load("Maps/Exit.png")
 
 class User(pygame.sprite.Sprite):
+  '''User's class'''
   def __init__(self, name):
     pygame.sprite.Sprite.__init__(self)
     self.image = user_img
@@ -64,8 +66,8 @@ class User(pygame.sprite.Sprite):
     damage = self.atk - (opponent.defense*0.5)
     opponent.health -= damage
 
-
 class Child(pygame.sprite.Sprite):
+  '''introduction to fighting an enemy: a child'''
   def __init__(self, image):
     pygame.sprite.Sprite.__init__(self)
     self.image = image
@@ -73,7 +75,41 @@ class Child(pygame.sprite.Sprite):
     self.defense = 0
     self.health = 3
 
+class Employee1(pygame.sprite.Sprite):
+  '''Employee Fights: Level 1'''
+  def __init__(self):
+    pygame.sprite.Sprite.__init__(self)
+    #self.image =
+    self.atk = 5
+    self.defense = 3
+    self.health = 10
 
+class Employee2(pygame.sprite.Sprite):
+  '''Employee Fights: Level 2'''
+  def __init__(self):
+    pygame.sprite.Sprite.__init__(self)
+    #self.image = 
+    self.atk = 10
+    self.defense = 7
+    self.health = 20
+
+class Employee3(pygame.sprite.Sprite):
+  '''Employee Fights: Level 3'''
+  def __init__(self):
+    pygame.sprite.Sprite.__init__(self)
+    #self.image = 
+    self.atk = 17
+    self.defense = 11
+    self.health = 25
+
+class Manager(pygame.sprite.Sprite):
+  '''Ultimate Boss: If you win, you escape'''
+  def __init__(self):
+    pygame.sprite.Sprite.__init__(self)
+    #self.image = 
+    self.atk = 20
+    self.defense = 15
+    self.health = 35 
 
 def text_messages(text,font):
   '''Render the text in color and return the rectangle'''
@@ -103,37 +139,3 @@ while not escaped:
 
 pygame.quit()
 quit()
-
-
-
-#class Employee1:
- # def __init__(self, nombre):
-  #  self.name = nombre
-   # self.atk = 5
-    #self.defense = 3
-  #  self.health = 10
-
-#class Employee2:
- # def __init__(self):
-  #  self.atk = 10
-   # self.defense = 7
-    #self.health = 25
-
-#class Employee3:
- # def __init__(self):
-  #  self.atk = 17
-   # self.defense = 15
-    #self.health = 60
-
-#print("You decided to buy some miscellaneous furniture to decorate your new apartment")
-#time.sleep(2)
-#print("You arrive at Ikea, the most magical place ever")
-#time.sleep(3)
-#print("\n")
-
-#print("Maybe too magical...")
-#time.sleep(2)
-#print("You end up wandering around too much")
-#time.sleep(.5)
-#print("Several annoying ankle biters decide to bother you")
-#time.sleep(3)
