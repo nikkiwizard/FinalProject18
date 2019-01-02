@@ -6,6 +6,7 @@ import pygame
 pygame.init()
 
 #color variables
+black = (0,0,0)
 blue = (20,0,249)
 
 #other variables
@@ -45,10 +46,9 @@ childrens = pygame.image.load("Maps/Children_Section.png")
 final_stage = pygame.image.load("Maps/Exit.png")
 
 class User(pygame.sprite.Sprite):
-  def __init__(self, name):
+  def __init__(self):
     pygame.sprite.Sprite.__init__(self)
     self.image = user_img
-    self.name = name
     self.atk = 1
     self.defense = 10
     self.health = 50
@@ -73,7 +73,22 @@ class Employee1(pygame.sprite.Sprite):
     self.atk = 5
     self.defense = 3
     self.health = 10
-    
+
+class Employee2(pygame.sprite.Sprite):
+  def __init__(self):
+    pygame.sprite.Sprite.__init__(self)
+    #self.image
+    self.atk = 10
+    self.defense = 7
+    self.health = 25
+
+class Employee3(pygame.sprite.Sprite):
+  def __init__(self):
+    pygame.sprite.Sprite.__init__(self)
+    #self.image
+    self.atk = 17
+    self.defense = 15
+    self.health = 60
 
 def text_messages(text,font):
   '''Render the text in color and return the rectangle'''
@@ -89,23 +104,33 @@ def message_display(text):
   display.blit(text_surf, text_rectangle.center)
 
 def scene1():
+  '''opening introduction'''
   display.blit(op_background,(0,0))
   display.blit(narrator_box, (0,300))
   message_display("It was a bright and sunny day.")
 
 def scene2():
+  '''opening introduction'''
   display.blit(op_background, (0,0))
   display.blit(narrator_box, (0,300))
   message_display("A perfect day for furniture shopping.")
 
 def scene3():
+  '''Cue Ikea'''
   display.blit(storefront, (0,0))
 
 def scene4():
-  display.blit(storefront, (0,0))
+  '''More Introduction'''
+  display.blit(storefront, (0,0)) 
   display.blit(narrator_box, (0,300))
   message_display("Ikea: The best place for interior decorating")
 
+def scene5():
+  '''First Map'''
+  display.fill(black)
+  display.blit(entrance, (0,0))
+
+#game loop escape
 escaped = False
 
 #game loop
@@ -114,6 +139,7 @@ while not escaped:
     if event.type == pygame.QUIT:
       escaped = True
 
+  clock.tick(7)
   key = pygame.key.get_pressed()
 
   if key[pygame.K_SPACE]:
@@ -131,21 +157,8 @@ while not escaped:
     scene3()
   elif count == 4:
     scene4()
-
-  clock.tick(7)
+  elif count == 5:
+    scene5()
 
 pygame.quit()
 quit()
-
-
-#class Employee2:
- # def __init__(self):
-  #  self.atk = 10
-   # self.defense = 7
-    #self.health = 25
-
-#class Employee3:
- # def __init__(self):
-  #  self.atk = 17
-   # self.defense = 15
-    #self.health = 60
