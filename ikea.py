@@ -1,3 +1,5 @@
+'''Remember to fix map sizes!!!!!!!!!!!!!!!!!!!!!'''
+
 #import modules
 import time
 import pygame
@@ -35,7 +37,7 @@ storefront = pygame.image.load("Backgrounds/Ikea_Storefront.png")
 narrator_box = pygame.image.load("Backgrounds/Narrator_Box.png")
 dialogue_box = pygame.image.load("Backgrounds/Dialogue_Box.png")
 '''map pictures'''
-entrance = pygame.image.load("Maps/Entrance.png")
+entrance = pygame.image.load("Maps/New_Ikea.png")
 living_room = pygame.image.load("Maps/Living_Room.png")
 dining = pygame.image.load("Maps/Dining.png")
 bedroom = pygame.image.load("Maps/Bedrooms.png")
@@ -75,7 +77,7 @@ class Employee1(pygame.sprite.Sprite):
     pygame.sprite.Sprite.__init__(self)
     #self.image =
     self.atk = 5
-    self.defense = 3
+    self.defense = 4
     self.health = 10
 
 class Employee2(pygame.sprite.Sprite):
@@ -84,7 +86,7 @@ class Employee2(pygame.sprite.Sprite):
     pygame.sprite.Sprite.__init__(self)
     #self.image = 
     self.atk = 10
-    self.defense = 7
+    self.defense = 8
     self.health = 20
 
 class Employee3(pygame.sprite.Sprite):
@@ -93,7 +95,7 @@ class Employee3(pygame.sprite.Sprite):
     pygame.sprite.Sprite.__init__(self)
     #self.image = 
     self.atk = 17
-    self.defense = 11
+    self.defense = 12
     self.health = 25
 
 class Manager(pygame.sprite.Sprite):
@@ -102,7 +104,7 @@ class Manager(pygame.sprite.Sprite):
     pygame.sprite.Sprite.__init__(self)
     #self.image = 
     self.atk = 20
-    self.defense = 15
+    self.defense = 16
     self.health = 35 
 
 def text_messages(text,font):
@@ -154,7 +156,7 @@ while not escaped:
     if event.type == pygame.QUIT:
       escaped = True
 
-  clock.tick(7)
+  clock.tick(9)
   key = pygame.key.get_pressed()
 
   if key[pygame.K_SPACE]:
