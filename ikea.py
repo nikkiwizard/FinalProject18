@@ -1,5 +1,3 @@
-'''Remember to fix map sizes!!!!!!!!!!!!!!!!!!!!!'''
-
 #import modules
 import time
 import pygame
@@ -10,7 +8,6 @@ pygame.init()
 #color variables
 black = (0,0,0)
 blue = (20,0,249)
-black = (0,0,0)
 
 #other variables
 count = 0
@@ -37,7 +34,7 @@ storefront = pygame.image.load("Backgrounds/Ikea_Storefront.png")
 narrator_box = pygame.image.load("Backgrounds/Narrator_Box.png")
 dialogue_box = pygame.image.load("Backgrounds/Dialogue_Box.png")
 '''map pictures'''
-entrance = pygame.image.load("Maps/New_Ikea.png")
+entrance = pygame.image.load("Maps/Entrance.png")
 living_room = pygame.image.load("Maps/Living_Room.png")
 dining = pygame.image.load("Maps/Dining.png")
 bedroom = pygame.image.load("Maps/Bedrooms.png")
@@ -49,7 +46,6 @@ childrens = pygame.image.load("Maps/Children_Section.png")
 final_stage = pygame.image.load("Maps/Exit.png")
 
 class User(pygame.sprite.Sprite):
-  '''User's class'''
   def __init__(self):
     pygame.sprite.Sprite.__init__(self)
     self.image = user_img
@@ -63,7 +59,6 @@ class User(pygame.sprite.Sprite):
     opponent.health -= damage
 
 class Child(pygame.sprite.Sprite):
-  '''introduction to fighting an enemy: a child'''
   def __init__(self, image):
     pygame.sprite.Sprite.__init__(self)
     self.image = image
@@ -72,40 +67,28 @@ class Child(pygame.sprite.Sprite):
     self.health = 3
 
 class Employee1(pygame.sprite.Sprite):
-  '''Employee Fights: Level 1'''
   def __init__(self):
     pygame.sprite.Sprite.__init__(self)
-    #self.image =
+    #self.image
     self.atk = 5
-    self.defense = 4
+    self.defense = 3
     self.health = 10
 
 class Employee2(pygame.sprite.Sprite):
-  '''Employee Fights: Level 2'''
   def __init__(self):
     pygame.sprite.Sprite.__init__(self)
-    #self.image = 
+    #self.image
     self.atk = 10
-    self.defense = 8
-    self.health = 20
-
-class Employee3(pygame.sprite.Sprite):
-  '''Employee Fights: Level 3'''
-  def __init__(self):
-    pygame.sprite.Sprite.__init__(self)
-    #self.image = 
-    self.atk = 17
-    self.defense = 12
+    self.defense = 7
     self.health = 25
 
-class Manager(pygame.sprite.Sprite):
-  '''Ultimate Boss: If you win, you escape'''
+class Employee3(pygame.sprite.Sprite):
   def __init__(self):
     pygame.sprite.Sprite.__init__(self)
-    #self.image = 
-    self.atk = 20
-    self.defense = 16
-    self.health = 35 
+    #self.image
+    self.atk = 17
+    self.defense = 15
+    self.health = 60
 
 def text_messages(text,font):
   '''Render the text in color and return the rectangle'''
@@ -156,7 +139,7 @@ while not escaped:
     if event.type == pygame.QUIT:
       escaped = True
 
-  clock.tick(9)
+  clock.tick(7)
   key = pygame.key.get_pressed()
 
   if key[pygame.K_SPACE]:
