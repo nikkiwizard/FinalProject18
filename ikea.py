@@ -8,6 +8,7 @@ pygame.init()
 
 #color variables
 blue = (20,0,249)
+black = (0,0,0)
 
 #window variables
 display_width = 800
@@ -23,8 +24,8 @@ clock = pygame.time.Clock()
 #image loading
 '''avatars'''
 user_img = pygame.image.load("Sprites/Main_Sprite_v2.png")
-girl = pygame.image.load("Sprites/Girl_v2.png")
-boy = pygame.image.load("Sprites/Boy_v2.png")
+girl_img = pygame.image.load("Sprites/Girl_v2.png")
+boy_img = pygame.image.load("Sprites/Boy_v2.png")
 '''backgrounds and text boxes'''
 narrator_box = pygame.image.load("Backgrounds/Narrator_Box.png")
 you_talk = pygame.image.load("Backgrounds/You_Dialogue.png")
@@ -80,22 +81,19 @@ class User(pygame.sprite.Sprite):
       display.blit(narrator_box,(0,300))
       message_display("You knock down some furniture and successfully escape")
 
-
 class Child(pygame.sprite.Sprite):
   '''introduction to fighting an enemy: a child'''
-  def __init__(self, image, x, y):
+  def __init__(self, image):
     pygame.sprite.Sprite.__init__(self)
     self.image = image
-    self.x = x
-    self.y = y
     self.atk = 1
     self.defense = 0
     self.health = 3
     self.visible = True
 
-  def draw(self,x,y):
+  def draw(self):
     if self.visible:
-      display.blit(self.image, (x,y))
+      display.blit(self.image, (350,200))
 
 class Employee1(pygame.sprite.Sprite):
   def __init__(self):
@@ -124,31 +122,42 @@ class Employee3(pygame.sprite.Sprite):
 #other variables
 count = 0
 you = User()
+boy = Child(boy_img)
 
 def text_messages(text,font):
   '''Render the text in color and return the rectangle'''
   text_surface = font.render(text, True, blue)
   return text_surface, text_surface.get_rect()
 
-def message_display(text):
+def message_display(text, x, y):
   '''Set up the text with font and rectangle center'''
   '''This one blits the actual text'''
   words = pygame.font.Font("courier.ttf", 22)
   text_surf, text_rectangle = text_messages(text, words)
-  text_rectangle.center = (70,400)
+  text_rectangle.center = (x,y)
   display.blit(text_surf, text_rectangle.center)
+
+def opponent_choice(character):
+  options = [fight, defend]
+  choice = random.choice(options)
+  if choice == "fight":
+    character.attack(You)
+    message_display("{character} attacks!")
+  elif choice == "defend":
+    character.defend()
+    message_display("{character} takes no damage")
 
 def scene1():
   '''opening introduction'''
   display.blit(op_back,(0,0))
   display.blit(narrator_box, (0,300))
-  message_display("It was a bright and sunny day.")
+  message_display("It was a bright and sunny day.", 70, 400)
 
 def scene2():
   '''opening introduction'''
   display.blit(op_back, (0,0))
   display.blit(narrator_box, (0,300))
-  message_display("A perfect day for furniture shopping.")
+  message_display("A perfect day for furniture shopping.", 70, 400)
 
 def scene3():
   '''Cue Ikea'''
@@ -158,7 +167,7 @@ def scene4():
   '''More Introduction'''
   display.blit(storefront, (0,0)) 
   display.blit(narrator_box, (0,300))
-  message_display("Ikea: The best place for interior decorating")
+  message_display("Ikea: The best place for interior decorating", 70, 400)
 
 def scene5():
   '''First Map'''
@@ -174,14 +183,14 @@ def scene7():
   display.blit(entrance_back, (0,0))
   you.draw()
   display.blit(you_talk,(0,300))
-  message_display("Wow, I sure hope I don't get lost in here")
+  message_display("Wow, I sure hope I don't get lost in here", 70, 400)
 
 def scene8():
   '''Scene 6 Continued'''
   display.blit(entrance_back, (0,0))
   you.draw()
   display.blit(you_talk,(0,300))
-  message_display("It's not like I'm going to have to fight anyone...")
+  message_display("It's not like I'm going to have to fight anyone...", 70, 400)
 
 def scene9():
   '''Living Room Map'''
@@ -197,33 +206,90 @@ def scene11():
   display.blit(living_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
-  message_display("Hmm, This couch is nice..")
+  message_display("Hmm, This couch is nice..", 70, 400)
 
 def scene12():
   '''Still more narration'''
   display.blit(living_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
-  message_display("Must..resist..impulsive buying...")
+  message_display("Must..resist..impulsive buying...", 70, 400)
+
+def scene13():
+  '''Right before fight scene'''
+  display.blit(living_back, (0,0))
+  you.draw()
+  boy.draw()
+  display.blit(you_talk, (0,300))
+  message_display("Hey Kid, I was looking at that", 70, 400)
+
+def scene14():
+  '''Again, right before fight'''
+  display.blit(living_back, (0,0))
+  you.draw()
+  boy.draw()
+  display.blit(child_talk, (0,300))
+  message_display("Mine now. Fight me, you anime wannabe.", 70, 400)
+
+def scene15():
+  '''introduction to fighting'''
+  display.fill(black)
+  you.draw()
+  boy.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Welcome to your first fight", 70, 400)
+
+def scene16():
+  '''intro continued'''
+  display.fill(black)
+  you.draw()
+  boy.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Hit the Up-Arrow Key to Attack.", 70, 375)
+  message_display("Hit the Down-Arrow Key to Defend", 70, 420)
+  message_display("Hit the Right-Arrow Key to Flee", 70, 465)
+
+def scene17():
+  display.fill(black)
+  you.draw()
+  boy.draw()
+  display.blit(narrator_box,(0,300))
+  message_display("Make your choice:")
 
 #game loop escape
 escaped = False
 
 #game loop
 while not escaped:
+  clock.tick(5)
+
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       escaped = True
 
-  clock.tick(7)
   key = pygame.key.get_pressed()
 
   if key[pygame.K_SPACE]:
     count += 1
     pygame.display.update()
 
+  def player_choice():
+    if key[pygame.K_UP]:
+      if count >= 17:
+        you.attack(boy)
+        return
+
+    elif key[pygame.K_DOWN]:
+      if count >= 17:
+        you.defend(boy)
+        return
+
+    elif key[pygame.K_LEFT]:
+      you.flee()
+      return
+
   if count == 0:
-    message_display("Hit SPACE to continue")
+    message_display("Hit SPACE to continue", 70, 400)
     pygame.display.update()
   elif count == 1:
     scene1()
@@ -249,6 +315,18 @@ while not escaped:
     scene11()
   elif count == 12:
     scene12()
+  elif count == 13:
+    scene13()
+  elif count == 14:
+    scene14()
+  elif count == 15:
+    scene15()
+  elif count == 16:
+    scene16()
+  elif count == 17:
+    scene17()
+    player.choice()
+    opponent_choice(boy)
 
 pygame.quit()
 quit()
