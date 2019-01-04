@@ -254,7 +254,7 @@ def scene17():
   you.draw()
   boy.draw()
   display.blit(narrator_box,(0,300))
-  message_display("Make your choice:")
+  message_display("Make your choice:", 70, 420)
 
 #game loop escape
 escaped = False
