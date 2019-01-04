@@ -138,7 +138,7 @@ def message_display(text, x, y):
   display.blit(text_surf, text_rectangle.center)
 
 def opponent_choice(character):
-  options = [fight, defend]
+  options = ["fight", "defend"]
   choice = random.choice(options)
   if choice == "fight":
     character.attack(You)
@@ -273,7 +273,7 @@ while not escaped:
     count += 1
     pygame.display.update()
 
-  def player_choice():
+  def choice():
     if key[pygame.K_UP]:
       if count >= 17:
         you.attack(boy)
@@ -325,7 +325,7 @@ while not escaped:
     scene16()
   elif count == 17:
     scene17()
-    player.choice()
+    choice()
     opponent_choice(boy)
 
 pygame.quit()
