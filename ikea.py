@@ -56,20 +56,28 @@ class User(pygame.sprite.Sprite):
     self.health = 50
 
   def draw(self):
+    '''blit the avatar on the screen'''
     display.blit(self.image, (20,200))
 
   def attack(self, opponent):
     '''single attack opponent'''
     damage = self.atk - (opponent.defense*0.5)
     opponent.health -= damage
-    if opponent.health == 0:
+    if opponent.health <= 0:
       opponent.visible = False
+      display.blit(narrator_box, (0,300))
+      message_display("You Win!", 70,400)
     else:
       opponent.visible = True
+      display.blit(narrator_box,(0,300))
+      message_display("You attack!", 70, 400)
+      message_display("Opponent takes {damage} damage", 70, 425)
 
   def defend(self,opponent):
     '''Take no damage for a turn'''
     self.health -= opponent.atk * 0
+    display.blit(narrator_box, (0,300))
+    message_display("You take no damage", 70, 400)
 
   def flee(self):
     luck = [0,1]
@@ -94,6 +102,20 @@ class Child(pygame.sprite.Sprite):
   def draw(self):
     if self.visible:
       display.blit(self.image, (350,200))
+
+  def attack(self):
+    '''single attack user'''
+    damage = self.atk - (you.defense*0.5)
+    you.health -= damage
+    display.blit(narrator_box,(0,300))
+    message_display("Opponent attacks!", 70, 400)
+    message_display("You take {damage} damage", 70, 425)
+
+  def defend(self):
+    '''Take no damage for a turn'''
+    self.health -= opponent.atk * 0
+    display.blit(narrator_box, (0,300))
+    message_display("Opponent takes no damage", 70, 400)
 
 class Employee1(pygame.sprite.Sprite):
   def __init__(self):
