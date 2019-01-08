@@ -97,11 +97,9 @@ class Child(pygame.sprite.Sprite):
     self.atk = 1
     self.defense = 0
     self.health = 3
-    self.visible = True
 
   def draw(self):
-    if self.visible:
-      display.blit(self.image, (350,200))
+    display.blit(self.image, (350,200))
 
   def attack(self):
     '''single attack the user'''
@@ -363,9 +361,12 @@ while not escaped:
     pygame.display.update()
   elif count == 17:
     scene17()
+    pygame.display.update()
+    time.sleep(1)
+    count += 1
   elif count == 18:
-    choice(key)
     opponent_choice(boy)
+    choice(key)
     if boy.health == 0:
       display.fill(black)
       you.draw()
