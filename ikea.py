@@ -63,20 +63,12 @@ class User(pygame.sprite.Sprite):
     '''single attack opponent'''
     damage = self.atk - (opponent.defense*0.5)
     opponent.health -= damage
-    if opponent.health <= 0:
-      opponent.visible = False
-      display.blit(narrator_box, (0,300))
-      message_display("You Win!", 70,400)
-      pygame.display.update()
-      time.sleep(2)
-    else:
-      opponent.visible = True
-      display.blit(narrator_box,(0,300))
-      message_display("You attack!", 70, 400)
-      message_display(f"Opponent takes {damage} damage", 70, 425)
-      message_display(f"Opponent health is now {opponent.health}", 70, 450)
-      pygame.display.update()
-      time.sleep(2)
+    display.blit(narrator_box,(0,300))
+    message_display("You attack!", 70, 400)
+    message_display(f"Opponent takes {damage} damage", 70, 425)
+    message_display(f"Opponent health is now {opponent.health}", 70, 450)
+    pygame.display.update()
+    time.sleep(2)
 
   def defend(self):
     '''Take no damage for a turn'''
@@ -170,6 +162,22 @@ def message_display(text, x, y):
   text_surf, text_rectangle = text_messages(text, words)
   text_rectangle.center = (x,y)
   display.blit(text_surf, text_rectangle.center)
+
+def choice(k):
+  if k[pygame.K_UP]:
+    print("K_UP")
+    if count >= 17:
+      you.attack(boy)
+      return
+
+  elif k[pygame.K_DOWN]:
+    if count >= 17:
+      you.defend(boy)
+      return
+
+  elif k[pygame.K_LEFT]:
+    you.flee()
+    return
 
 def opponent_choice(character):
   options = ["fight", "defend"]
@@ -282,11 +290,21 @@ def scene16():
   message_display("Hit the Right-Arrow Key to Flee", 70, 465)
 
 def scene17():
+  '''choice input'''
   display.fill(black)
   you.draw()
   boy.draw()
   display.blit(narrator_box,(0,300))
-  message_display("Make your choice:", 70, 420)
+  message_display("Make your choice:", 70, 400)
+  pygame.display.update()
+
+def scene19():
+  '''After Fight'''
+  display.blit(living_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("Phew, that was easy", 70, 400)
+  message_display("Sure hope I don't have to do that again", 70, 420)
   pygame.display.update()
 
 #game loop escape
@@ -306,23 +324,7 @@ while not escaped:
     print("advanced one count")
     count += 1
     pygame.display.update()
-
-  def choice():
-    if key[pygame.K_UP]:
-      print("K_UP")
-      if count >= 17:
-        you.attack(boy)
-        return
-
-    elif key[pygame.K_DOWN]:
-      if count >= 17:
-        you.defend(boy)
-        return
-
-    elif key[pygame.K_LEFT]:
-      you.flee()
-      return
-
+  
   if count == 0:
     message_display("Hit SPACE to continue", 70, 400)
     pygame.display.update()
@@ -358,11 +360,22 @@ while not escaped:
     scene15()
   elif count == 16:
     scene16()
+    pygame.display.update()
   elif count == 17:
     scene17()
-    while boy.health != 0:
-      choice()
-      opponent_choice(boy)
+  elif count == 18:
+    choice(key)
+    opponent_choice(boy)
+    if boy.health == 0:
+      display.fill(black)
+      you.draw()
+      display.blit(narrator_box, (0,300))
+      message_display("You Win!", 70,400)
+      pygame.display.update()
+      count += 1
+      time.sleep(2)
+  elif count == 19:
+    scene19()
 
 pygame.quit()
 quit()
