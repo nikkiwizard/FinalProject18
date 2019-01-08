@@ -67,27 +67,35 @@ class User(pygame.sprite.Sprite):
       opponent.visible = False
       display.blit(narrator_box, (0,300))
       message_display("You Win!", 70,400)
+      pygame.display.update()
+      time.sleep(2)
     else:
       opponent.visible = True
       display.blit(narrator_box,(0,300))
       message_display("You attack!", 70, 400)
-      message_display("Opponent takes {damage} damage", 70, 425)
+      message_display(f"Opponent takes {damage} damage", 70, 425)
+      message_display(f"Opponent health is now {opponent.health}", 70, 450)
+      pygame.display.update()
+      time.sleep(2)
 
-  def defend(self,opponent):
+  def defend(self):
     '''Take no damage for a turn'''
-    self.health -= opponent.atk * 0
     display.blit(narrator_box, (0,300))
     message_display("You take no damage", 70, 400)
+    pygame.display.update()
+    time.sleep(2)
 
   def flee(self):
     luck = [0,1]
     chance = random.choice(luck)
     if chance == 0:
       display.blit(narrator_box, (0,300))
-      message_display("You trip and fail to flee")
+      message_display("You trip and fail to flee", 70, 400)
+      pygame.display.update()
     else:
       display.blit(narrator_box,(0,300))
-      message_display("You knock down some furniture and successfully escape")
+      message_display("You knock down some furniture and successfully escape", 70, 400)
+      pygame.display.update()
 
 class Child(pygame.sprite.Sprite):
   '''introduction to fighting an enemy: a child'''
@@ -104,18 +112,22 @@ class Child(pygame.sprite.Sprite):
       display.blit(self.image, (350,200))
 
   def attack(self):
-    '''single attack user'''
-    damage = self.atk - (you.defense*0.5)
+    '''single attack the user'''
+    damage = self.atk
     you.health -= damage
     display.blit(narrator_box,(0,300))
     message_display("Opponent attacks!", 70, 400)
-    message_display("You take {damage} damage", 70, 425)
+    message_display(f"You take {damage} damage", 70, 425)
+    message_display(f"Your health is now {you.health}", 70, 450)
+    pygame.display.update()
+    time.sleep(2)
 
   def defend(self):
     '''Take no damage for a turn'''
-    self.health -= opponent.atk * 0
     display.blit(narrator_box, (0,300))
     message_display("Opponent takes no damage", 70, 400)
+    pygame.display.update()
+    time.sleep(2)
 
 class Employee1(pygame.sprite.Sprite):
   def __init__(self):
@@ -163,11 +175,9 @@ def opponent_choice(character):
   options = ["fight", "defend"]
   choice = random.choice(options)
   if choice == "fight":
-    character.attack(You)
-    message_display("{character} attacks!")
+    character.attack()
   elif choice == "defend":
     character.defend()
-    message_display("{character} takes no damage")
 
 def scene1():
   '''opening introduction'''
@@ -277,6 +287,7 @@ def scene17():
   boy.draw()
   display.blit(narrator_box,(0,300))
   message_display("Make your choice:", 70, 420)
+  pygame.display.update()
 
 #game loop escape
 escaped = False
@@ -292,11 +303,13 @@ while not escaped:
   key = pygame.key.get_pressed()
 
   if key[pygame.K_SPACE]:
+    print("advanced one count")
     count += 1
     pygame.display.update()
 
   def choice():
     if key[pygame.K_UP]:
+      print("K_UP")
       if count >= 17:
         you.attack(boy)
         return
@@ -347,8 +360,9 @@ while not escaped:
     scene16()
   elif count == 17:
     scene17()
-    choice()
-    opponent_choice(boy)
+    while boy.health != 0:
+      choice()
+      opponent_choice(boy)
 
 pygame.quit()
 quit()
