@@ -78,6 +78,7 @@ class User(pygame.sprite.Sprite):
     time.sleep(2)
 
   def flee(self):
+    '''50% chance of escaping a fight'''
     luck = [0,1]
     chance = random.choice(luck)
     if chance == 0:
@@ -99,6 +100,7 @@ class Child(pygame.sprite.Sprite):
     self.health = 3
 
   def draw(self):
+    '''blit the avatar on screen'''
     display.blit(self.image, (350,200))
 
   def attack(self):
@@ -115,7 +117,7 @@ class Child(pygame.sprite.Sprite):
   def defend(self):
     '''Take no damage for a turn'''
     display.blit(narrator_box, (0,300))
-    message_display("Opponent takes no damage", 70, 400)
+    message_display("Opponent defends", 70, 400)
     pygame.display.update()
     time.sleep(2)
 
@@ -147,6 +149,7 @@ class Employee3(pygame.sprite.Sprite):
 count = 0
 you = User()
 boy = Child(boy_img)
+girl = Child(girl_img)
 
 def text_messages(text,font):
   '''Render the text in color and return the rectangle'''
@@ -184,6 +187,14 @@ def opponent_choice(character):
     character.attack()
   elif choice == "defend":
     character.defend()
+
+def win_fight():
+  display.fill(black)
+  you.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("You Win!", 70,400)
+  pygame.display.update()
+  time.sleep(2)
 
 def scene1():
   '''opening introduction'''
@@ -294,7 +305,6 @@ def scene17():
   boy.draw()
   display.blit(narrator_box,(0,300))
   message_display("Make your choice:", 70, 400)
-  pygame.display.update()
 
 def scene19():
   '''After Fight'''
@@ -306,9 +316,52 @@ def scene19():
   pygame.display.update()
 
 def scene20():
-  '''next map'''
+  '''Next map'''
   display.fill(black)
   display.blit(dining, (0,0))
+
+def scene21():
+  '''Dining Room'''
+  display.blit(dining_back, (0,0))
+
+def scene22():
+  '''Dining Room narration'''
+  display.blit(dining_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("I definitely need another table", 70, 400)
+
+def scene23():
+  '''More narration'''
+  display.blit(dining_back, (0,0))
+  you.draw()
+  girl.draw()
+  display.blit(child_talk, (0,300))
+  message_display("What a loser! You're looking at tables.", 70, 400)
+
+def scene24():
+  '''yet more narration'''
+  display.blit(dining_back, (0,0))
+  you.draw()
+  girl.draw()
+  display.blit(you_talk, (0,300))
+  message_display("Are you kidding me??", 70, 400)
+  message_display("Where are all these kids coming from???", 70, 400)
+
+def scene25():
+  '''second fight scene'''
+  display.fill(black)
+  you.draw()
+  girl.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Make your choice: ", 70, 400)
+
+def scene27():
+  '''After fight scene'''
+  display.blit(dining_back, (0,0))
+  you.draw()
+  display.blit(you_talk)
+  message_display("This time I really hope I don't have to do that again", 70, 400)
 
 #game loop escape
 escaped = False
@@ -373,17 +426,35 @@ while not escaped:
     opponent_choice(boy)
     choice(key)
     if boy.health == 0:
-      display.fill(black)
-      you.draw()
-      display.blit(narrator_box, (0,300))
-      message_display("You Win!", 70,400)
-      pygame.display.update()
+      win_fight()
       count += 1
-      time.sleep(2)
   elif count == 19:
     scene19()
   elif count == 20:
     scene20()
+  elif count == 21:
+    scene21()
+  elif count == 22:
+    scene22()
+  elif count == 23:
+    scene23()
+  elif count == 24:
+    scene24()
+  elif count == 25:
+    scene25()
+    pygame.display.update()
+    time.sleep(2)
+    count += 1
+  elif count == 26:
+    girl.health = 3
+    opponent_choice(girl)
+    choice(key)
+    if girl.health == 0:
+      win_fight()
+      count += 1
+  elif count == 27:
+    scene27()
+
 
 pygame.quit()
 quit()
