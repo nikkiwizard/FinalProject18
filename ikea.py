@@ -347,6 +347,7 @@ def scene24():
   display.blit(you_talk, (0,300))
   message_display("Are you kidding me??", 70, 400)
   message_display("Where are all these kids coming from???", 70, 400)
+  girl.health = 3
 
 def scene25():
   '''second fight scene'''
@@ -446,7 +447,6 @@ while not escaped:
     time.sleep(2)
     count += 1
   elif count == 26:
-    girl.health = 3
     opponent_choice(girl)
     choice(key)
     if girl.health == 0:
