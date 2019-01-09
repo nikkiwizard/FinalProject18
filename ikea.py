@@ -305,6 +305,11 @@ def scene19():
   message_display("Sure hope I don't have to do that again", 70, 420)
   pygame.display.update()
 
+def scene20():
+  '''next map'''
+  display.fill(black)
+  display.blit(dining, (0,0))
+
 #game loop escape
 escaped = False
 
@@ -377,6 +382,8 @@ while not escaped:
       time.sleep(2)
   elif count == 19:
     scene19()
+  elif count == 20:
+    scene20()
 
 pygame.quit()
 quit()
