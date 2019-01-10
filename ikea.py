@@ -173,7 +173,7 @@ def choice(k):
 
   elif k[pygame.K_DOWN]:
     if count >= 17:
-      you.defend(boy)
+      you.defend()
       return
 
   elif k[pygame.K_LEFT]:
@@ -348,6 +348,7 @@ def scene24():
   message_display("Are you kidding me??", 70, 400)
   message_display("Where are all these kids coming from???", 70, 400)
   girl.health = 3
+  print(f"Girl's health is {girl.health}")
 
 def scene25():
   '''second fight scene'''
@@ -448,13 +449,13 @@ while not escaped:
     count += 1
   elif count == 26:
     opponent_choice(girl)
+    print(f"Girl's health is now {girl.health}")
     choice(key)
     if girl.health == 0:
       win_fight()
       count += 1
   elif count == 27:
     scene27()
-
 
 pygame.quit()
 quit()
