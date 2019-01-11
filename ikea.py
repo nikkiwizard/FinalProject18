@@ -96,8 +96,8 @@ class User(pygame.sprite.Sprite):
       display.blit(narrator_box,(0,300))
       message_display("You knock down some furniture and successfully escape", 70, 400)
       pygame.display.update()
-      count += 1
       time.sleep(2)
+      count += 1
   
   def defend(self):
     '''Take no damage for a turn'''
@@ -386,12 +386,13 @@ def scene17():
 
 def scene19():
   '''After Fight'''
+  global count
   display.blit(living_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("Phew, that was easy", 70, 400)
   message_display("Sure hope I don't have to do that again", 70, 420)
-  pygame.display.update()
+  count += 1
 
 def scene20():
   '''Next map'''
@@ -438,10 +439,12 @@ def scene25():
 
 def scene27():
   '''After fight scene'''
+  global count
   display.blit(dining_back, (0,0))
   you.draw()
-  display.blit(you_talk)
+  display.blit(you_talk, (0,300))
   message_display("This time I really hope I don't have to do that again", 70, 400)
+  count += 1
 
 def scene28():
   '''next map'''
@@ -456,24 +459,24 @@ def scene30():
   '''gift from the author'''
   display.blit(bstorage_back, (0,0))
   you.draw()
-  display.blit(narrator_box(0,300))
+  display.blit(narrator_box, (0,300))
   message_display("Congratulations on winning your first two fights!", 70, 400)
 
 def scene31():
   '''gift from the author'''
   display.blit(bstorage_back, (0,0))
   you.draw()
-  display.blit(narrator_box(0,300))
+  display.blit(narrator_box, (0,300))
   message_display("Since you did so well, here's a gift! :)", 70, 400)
   you.health = 60
-  you.attack = 3
+  you.atk = 3
 
 def scene32():
   '''gift from the author! atk and health increase!'''
   display.blit(bstorage_back, (0,0))
   you.draw()
-  display.blit(narrator_box(0,300))
-  message_display(f"Health is now {you.health}", 70, 400)
+  display.blit(narrator_box, (0,300))
+  message_display(f"Health is now {you.health}", 70, 390)
   message_display(f"Attack Power is now {you.atk}", 70, 420)
 
 def scene33():
@@ -481,9 +484,9 @@ def scene33():
   display.blit(bstorage_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
-  message_display("To be able to go back home, you must fight", 70, 400)
+  message_display("To be able to go back home, you must fight", 70, 390)
   message_display("your way out", 70, 420)
-  message_display("Good Luck, grasshopper", 70, 440)
+  message_display("Good Luck, grasshopper", 70, 450)
 
 #game loop escape
 escaped = False
@@ -499,7 +502,7 @@ while not escaped:
   key = pygame.key.get_pressed()
 
   if key[pygame.K_SPACE]:
-    print("advanced one count")
+    print(f"advanced one count {count}")
     count += 1
     pygame.display.update()
   
@@ -552,6 +555,7 @@ while not escaped:
       count += 1
   elif count == 19:
     scene19()
+    pygame.display.update()
   elif count == 20:
     scene20()
   elif count == 21:
@@ -575,6 +579,7 @@ while not escaped:
       count += 1
   elif count == 27:
     scene27()
+    pygame.display.update()
   elif count == 28:
     scene28()
   elif count == 29:
