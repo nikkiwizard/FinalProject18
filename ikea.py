@@ -38,7 +38,7 @@ storefront = pygame.image.load("Backgrounds/Ikea_Storefront.png")
 entrance_back = pygame.image.load("Backgrounds/Entrance_Back.png")
 living_back = pygame.image.load("Backgrounds/Living_Back.png")
 dining_back = pygame.image.load("Backgrounds/Dining_Back.png")
-bedroom_back = pygame.image.load("Backgrounds/Bedroom_Back.png")
+bed_back = pygame.image.load("Backgrounds/Bedroom_Back.png")
 bstorage_back = pygame.image.load("Backgrounds/bedroomstorage_back.png")
 '''map pictures'''
 entrance = pygame.image.load("Maps/Entrance.png")
@@ -108,12 +108,12 @@ class User(pygame.sprite.Sprite):
 
 class Child(pygame.sprite.Sprite):
   '''introduction to fighting an enemy: a child'''
-  def __init__(self, image):
+  def __init__(self, image, hp):
     pygame.sprite.Sprite.__init__(self)
     self.image = image
     self.atk = 1
     self.defense = 0
-    self.health = 3
+    self.health = hp
 
   def draw(self):
     '''blit the avatar on screen'''
@@ -229,8 +229,8 @@ class Employee3(pygame.sprite.Sprite):
 
 #class assignments
 you = User()
-boy = Child(boy_img)
-girl = Child(girl_img)
+boy = Child(boy_img, 3)
+girl = Child(girl_img, 3)
 
 def text_messages(text,font):
   '''Render the text in color and return the rectangle'''
@@ -426,8 +426,6 @@ def scene24():
   display.blit(you_talk, (0,300))
   message_display("Are you kidding me??", 70, 400)
   message_display("Where are all these kids coming from???", 70, 400)
-  girl.health = 3
-  print(f"Girl's health is {girl.health}")
 
 def scene25():
   '''second fight scene'''
@@ -449,22 +447,22 @@ def scene27():
 def scene28():
   '''next map'''
   display.fill(black)
-  display.blit(bedroom_storage, (0,0))
+  display.blit(bedroom, (0,0))
 
 def scene29():
   '''bedrooms'''
-  display.blit(bstorage_back, (0,0))
+  display.blit(bed_back, (0,0))
 
 def scene30():
   '''gift from the author'''
-  display.blit(bstorage_back, (0,0))
+  display.blit(bed_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display("Congratulations on winning your first two fights!", 70, 400)
 
 def scene31():
   '''gift from the author'''
-  display.blit(bstorage_back, (0,0))
+  display.blit(bed_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display("Since you did so well, here's a gift! :)", 70, 400)
@@ -473,7 +471,7 @@ def scene31():
 
 def scene32():
   '''gift from the author! atk and health increase!'''
-  display.blit(bstorage_back, (0,0))
+  display.blit(bed_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display(f"Health is now {you.health}", 70, 390)
@@ -481,7 +479,7 @@ def scene32():
 
 def scene33():
   '''good luck'''
-  display.blit(bstorage_back, (0,0))
+  display.blit(bed_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display("To be able to go back home, you must fight", 70, 390)
