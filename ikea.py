@@ -21,6 +21,9 @@ pygame.display.set_caption("Ikea Adventure")
 #clock
 clock = pygame.time.Clock()
 
+#scene count
+count = 0
+
 #image loading
 '''avatars'''
 user_img = pygame.image.load("Sprites/Main_Sprite_v2.png")
@@ -35,6 +38,8 @@ storefront = pygame.image.load("Backgrounds/Ikea_Storefront.png")
 entrance_back = pygame.image.load("Backgrounds/Entrance_Back.png")
 living_back = pygame.image.load("Backgrounds/Living_Back.png")
 dining_back = pygame.image.load("Backgrounds/Dining_Back.png")
+bedroom_back = pygame.image.load("Backgrounds/Bedroom_Back.png")
+bstorage_back = pygame.image.load("Backgrounds/bedroomstorage_back.png")
 '''map pictures'''
 entrance = pygame.image.load("Maps/Entrance.png")
 living_room = pygame.image.load("Maps/Living_Room.png")
@@ -61,7 +66,7 @@ class User(pygame.sprite.Sprite):
 
   def attack(self, opponent):
     '''single attack opponent'''
-    damage = self.atk - (opponent.defense*0.5)
+    damage = self.atk
     opponent.health -= damage
     display.blit(narrator_box,(0,300))
     message_display("You attack!", 70, 400)
@@ -79,16 +84,27 @@ class User(pygame.sprite.Sprite):
 
   def flee(self):
     '''50% chance of escaping a fight'''
+    global count
     luck = [0,1]
     chance = random.choice(luck)
     if chance == 0:
       display.blit(narrator_box, (0,300))
       message_display("You trip and fail to flee", 70, 400)
       pygame.display.update()
+      time.sleep(2)
     else:
       display.blit(narrator_box,(0,300))
       message_display("You knock down some furniture and successfully escape", 70, 400)
       pygame.display.update()
+      count += 1
+      time.sleep(2)
+  
+  def defend(self):
+    '''Take no damage for a turn'''
+    display.blit(narrator_box, (0,300))
+    message_display("Opponent defends", 70, 400)
+    pygame.display.update()
+    time.sleep(2)
 
 class Child(pygame.sprite.Sprite):
   '''introduction to fighting an enemy: a child'''
@@ -122,31 +138,96 @@ class Child(pygame.sprite.Sprite):
     time.sleep(2)
 
 class Employee1(pygame.sprite.Sprite):
-  def __init__(self):
+  def __init__(self, img):
     pygame.sprite.Sprite.__init__(self)
-    #self.image
+    self.image = img
     self.atk = 5
     self.defense = 3
     self.health = 10
 
+  def draw(self):
+    '''blit the avatar on screen'''
+    display.blit(self.image, (300,200))
+
+  def attack(self):
+    '''single attack the user'''
+    damage = self.atk
+    you.health -= damage
+    display.blit(narrator_box,(0,300))
+    message_display("Opponent attacks!", 70, 400)
+    message_display(f"You take {damage} damage", 70, 425)
+    message_display(f"Your health is now {you.health}", 70, 450)
+    pygame.display.update()
+    time.sleep(2)
+
+  def defend(self):
+    '''Take no damage for a turn'''
+    display.blit(narrator_box, (0,300))
+    message_display("Opponent defends", 70, 400)
+    pygame.display.update()
+    time.sleep(2)
+
 class Employee2(pygame.sprite.Sprite):
-  def __init__(self):
+  def __init__(self, img):
     pygame.sprite.Sprite.__init__(self)
-    #self.image
+    self.image = img
     self.atk = 10
     self.defense = 7
     self.health = 25
 
+  def draw(self):
+    '''blit the avatar on screen'''
+    display.blit(self.image, (250,200))
+
+  def attack(self):
+    '''single attack the user'''
+    damage = self.atk
+    you.health -= damage
+    display.blit(narrator_box,(0,300))
+    message_display("Opponent attacks!", 70, 400)
+    message_display(f"You take {damage} damage", 70, 425)
+    message_display(f"Your health is now {you.health}", 70, 450)
+    pygame.display.update()
+    time.sleep(2)
+
+  def defend(self):
+    '''Take no damage for a turn'''
+    display.blit(narrator_box, (0,300))
+    message_display("Opponent defends", 70, 400)
+    pygame.display.update()
+    time.sleep(2)
+
 class Employee3(pygame.sprite.Sprite):
-  def __init__(self):
+  def __init__(self, img):
     pygame.sprite.Sprite.__init__(self)
-    #self.image
+    self.image = img
     self.atk = 17
     self.defense = 15
     self.health = 60
 
-#other variables
-count = 0
+  def draw(self):
+    '''blit the avatar on screen'''
+    display.blit(self.image, (200,200))
+
+  def attack(self):
+    '''single attack the user'''
+    damage = self.atk
+    you.health -= damage
+    display.blit(narrator_box,(0,300))
+    message_display("Opponent attacks!", 70, 400)
+    message_display(f"You take {damage} damage", 70, 425)
+    message_display(f"Your health is now {you.health}", 70, 450)
+    pygame.display.update()
+    time.sleep(2)
+
+  def defend(self):
+    '''Take no damage for a turn'''
+    display.blit(narrator_box, (0,300))
+    message_display("Opponent defends", 70, 400)
+    pygame.display.update()
+    time.sleep(2)
+
+#class assignments
 you = User()
 boy = Child(boy_img)
 girl = Child(girl_img)
@@ -164,19 +245,16 @@ def message_display(text, x, y):
   text_rectangle.center = (x,y)
   display.blit(text_surf, text_rectangle.center)
 
-def choice(k):
+def choice(k, opponent):
   if k[pygame.K_UP]:
-    print("K_UP")
-    if count >= 17:
-      you.attack(boy)
-      return
+    you.attack(opponent)
+    return
 
   elif k[pygame.K_DOWN]:
-    if count >= 17:
-      you.defend()
-      return
+    you.defend()
+    return
 
-  elif k[pygame.K_LEFT]:
+  elif k[pygame.K_RIGHT]:
     you.flee()
     return
 
@@ -426,7 +504,7 @@ while not escaped:
     count += 1
   elif count == 18:
     opponent_choice(boy)
-    choice(key)
+    choice(key, boy)
     if boy.health == 0:
       win_fight()
       count += 1
@@ -449,8 +527,7 @@ while not escaped:
     count += 1
   elif count == 26:
     opponent_choice(girl)
-    print(f"Girl's health is now {girl.health}")
-    choice(key)
+    choice(key, girl)
     if girl.health == 0:
       win_fight()
       count += 1
