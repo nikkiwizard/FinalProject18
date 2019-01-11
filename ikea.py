@@ -143,7 +143,7 @@ class Employee1(pygame.sprite.Sprite):
     self.image = img
     self.atk = 5
     self.defense = 3
-    self.health = 10
+    self.health = 12
 
   def draw(self):
     '''blit the avatar on screen'''
@@ -443,6 +443,48 @@ def scene27():
   display.blit(you_talk)
   message_display("This time I really hope I don't have to do that again", 70, 400)
 
+def scene28():
+  '''next map'''
+  display.fill(black)
+  display.blit(bedroom_storage, (0,0))
+
+def scene29():
+  '''bedrooms'''
+  display.blit(bstorage_back, (0,0))
+
+def scene30():
+  '''gift from the author'''
+  display.blit(bstorage_back, (0,0))
+  you.draw()
+  display.blit(narrator_box(0,300))
+  message_display("Congratulations on winning your first two fights!", 70, 400)
+
+def scene31():
+  '''gift from the author'''
+  display.blit(bstorage_back, (0,0))
+  you.draw()
+  display.blit(narrator_box(0,300))
+  message_display("Since you did so well, here's a gift! :)", 70, 400)
+  you.health = 60
+  you.attack = 3
+
+def scene32():
+  '''gift from the author! atk and health increase!'''
+  display.blit(bstorage_back, (0,0))
+  you.draw()
+  display.blit(narrator_box(0,300))
+  message_display(f"Health is now {you.health}", 70, 400)
+  message_display(f"Attack Power is now {you.atk}", 70, 420)
+
+def scene33():
+  '''good luck'''
+  display.blit(bstorage_back, (0,0))
+  you.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("To be able to go back home, you must fight", 70, 400)
+  message_display("your way out", 70, 420)
+  message_display("Good Luck, grasshopper", 70, 440)
+
 #game loop escape
 escaped = False
 
@@ -533,6 +575,18 @@ while not escaped:
       count += 1
   elif count == 27:
     scene27()
+  elif count == 28:
+    scene28()
+  elif count == 29:
+    scene29()
+  elif count == 30:
+    scene30()
+  elif count == 31:
+    scene31()
+  elif count == 32:
+    scene32()
+  elif count == 33:
+    scene33()
 
 pygame.quit()
 quit()
