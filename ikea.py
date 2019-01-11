@@ -29,6 +29,9 @@ count = 0
 user_img = pygame.image.load("Sprites/Main_Sprite_v2.png")
 girl_img = pygame.image.load("Sprites/Girl_v2.png")
 boy_img = pygame.image.load("Sprites/Boy_v2.png")
+emma_img = pygame.image.load("Sprites/Emma_v2.png")
+mason_img = pygame.image.load("Sprites/Mason_v2.png")
+
 '''backgrounds and text boxes'''
 narrator_box = pygame.image.load("Backgrounds/Narrator_Box.png")
 you_talk = pygame.image.load("Backgrounds/You_Dialogue.png")
@@ -138,12 +141,12 @@ class Child(pygame.sprite.Sprite):
     time.sleep(2)
 
 class Employee1(pygame.sprite.Sprite):
-  def __init__(self, img):
+  def __init__(self, img, hp):
     pygame.sprite.Sprite.__init__(self)
     self.image = img
     self.atk = 5
     self.defense = 3
-    self.health = 12
+    self.health = hp
 
   def draw(self):
     '''blit the avatar on screen'''
@@ -231,6 +234,9 @@ class Employee3(pygame.sprite.Sprite):
 you = User()
 boy = Child(boy_img, 3)
 girl = Child(girl_img, 3)
+emma = Employee1(emma_img, 12)
+mason = Employee1(mason_img, 12)
+
 
 def text_messages(text,font):
   '''Render the text in color and return the rectangle'''
