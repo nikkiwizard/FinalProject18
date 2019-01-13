@@ -31,11 +31,13 @@ girl_img = pygame.image.load("Sprites/Girl_v2.png")
 boy_img = pygame.image.load("Sprites/Boy_v2.png")
 emma_img = pygame.image.load("Sprites/Emma_v2.png")
 mason_img = pygame.image.load("Sprites/Mason_v2.png")
-'''backgrounds and text boxes'''
+'''dialogue boxes'''
 narrator_box = pygame.image.load("Backgrounds/Narrator_Box.png")
 you_talk = pygame.image.load("Backgrounds/You_Dialogue.png")
 child_talk = pygame.image.load("Backgrounds/Child_Dialogue.png")
 emma_talk = pygame.image.load("Backgrounds/Emma_Dialogue.png")
+mason_talk = pygame.image.load("Backgrounds/Mason_Dialogue.png")
+'''backgrounds'''
 op_back = pygame.image.load("Backgrounds/Opening_Background.png")
 storefront = pygame.image.load("Backgrounds/Ikea_Storefront.png")
 entrance_back = pygame.image.load("Backgrounds/Entrance_Back.png")
@@ -44,6 +46,7 @@ dining_back = pygame.image.load("Backgrounds/Dining_Back.png")
 bed_back = pygame.image.load("Backgrounds/Bedroom_Back.png")
 bstorage_back = pygame.image.load("Backgrounds/bedroomstorage_back.png")
 bath_back1 = pygame.image.load("Backgrounds/bathroom1_back.png")
+bath_back2 = pygame.image.load("Backgrounds/bathroom2_back.png")
 '''map pictures'''
 entrance = pygame.image.load("Maps/Entrance.png")
 living_room = pygame.image.load("Maps/Living_Room.png")
@@ -607,6 +610,39 @@ def scene51():
   display.blit(you_talk, (0,300))
   message_display("Maybe I need some professional help.",  60, 400)
 
+def scene52():
+  '''mason appears for even more narration'''
+  display.blit(bath_back2, (0,0))
+  you.draw()
+  mason.draw()
+  display.blit(mason_talk, (0,300))
+  message_display("Did you say professional help? XD!", 60, 400)
+
+def scene53():
+  '''right before fight scene'''
+  display.blit(bath_back2, (0,0))
+  you.draw()
+  mason.draw()
+  display.blit(you_talk, (0,300))
+  message_display("AAAAAAAAAAAAAAAAAAAAAA", 60, 390)
+  message_display("It's time to stop!", 60, 420)
+
+def scene54():
+  '''fourth fight scene'''
+  display.fill(black)
+  you.draw()
+  mason.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Make your choice: ", 60, 400)
+
+def scene56():
+  '''after fourth fight'''
+  display.blit(bath_back2, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("I'm starting to think I'm being attacked", 60, 390)
+  message_display("I'd better get out of here ASAP", 60, 420)
+
 #game loop escape
 escaped = False
 
@@ -755,6 +791,24 @@ while not escaped:
     scene50()
   elif count == 51:
     scene51()
+  elif count == 52:
+    scene52()
+  elif count == 53:
+    scene53()
+  elif count == 54:
+    scene54()
+    pygame.display.update()
+    time.sleep(2)
+    count += 1
+  elif count == 55:
+    opponent_choice(mason)
+    choice(key, mason)
+    if mason.health == 0:
+      win_fight()
+      count += 1
+  elif count == 56:
+    scene56()
+
 
 pygame.quit()
 quit()
