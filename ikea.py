@@ -464,14 +464,14 @@ def scene29():
   display.blit(bed_back, (0,0))
 
 def scene30():
-  '''gift from the author'''
+  '''gift from the developer'''
   display.blit(bed_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display("Congratulations on winning your first two fights!", 60, 400)
 
 def scene31():
-  '''gift from the author'''
+  '''gift from the developer'''
   display.blit(bed_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
@@ -480,7 +480,7 @@ def scene31():
   you.atk = 3
 
 def scene32():
-  '''gift from the author! atk and health increase!'''
+  '''gift from the developer! atk and health increase!'''
   display.blit(bed_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
@@ -642,6 +642,14 @@ def scene56():
   display.blit(you_talk, (0,300))
   message_display("I'm starting to think I'm being attacked", 60, 390)
   message_display("I'd better get out of here ASAP", 60, 420)
+
+def scene57():
+  '''workspace map'''
+  display.fill(black)
+  display.blit(workspaces, (0,0))
+
+def scene58():
+  '''developer's gift!'''
 
 #game loop escape
 escaped = False
