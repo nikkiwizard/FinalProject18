@@ -31,11 +31,11 @@ girl_img = pygame.image.load("Sprites/Girl_v2.png")
 boy_img = pygame.image.load("Sprites/Boy_v2.png")
 emma_img = pygame.image.load("Sprites/Emma_v2.png")
 mason_img = pygame.image.load("Sprites/Mason_v2.png")
-
 '''backgrounds and text boxes'''
 narrator_box = pygame.image.load("Backgrounds/Narrator_Box.png")
 you_talk = pygame.image.load("Backgrounds/You_Dialogue.png")
 child_talk = pygame.image.load("Backgrounds/Child_Dialogue.png")
+emma_talk = pygame.image.load("Backgrounds/Emma_Dialogue.png")
 op_back = pygame.image.load("Backgrounds/Opening_Background.png")
 storefront = pygame.image.load("Backgrounds/Ikea_Storefront.png")
 entrance_back = pygame.image.load("Backgrounds/Entrance_Back.png")
@@ -72,16 +72,16 @@ class User(pygame.sprite.Sprite):
     damage = self.atk
     opponent.health -= damage
     display.blit(narrator_box,(0,300))
-    message_display("You attack!", 70, 400)
-    message_display(f"Opponent takes {damage} damage", 70, 425)
-    message_display(f"Opponent health is now {opponent.health}", 70, 450)
+    message_display("You attack!", 60, 400)
+    message_display(f"Opponent takes {damage} damage", 60, 425)
+    message_display(f"Opponent health is now {opponent.health}", 60, 450)
     pygame.display.update()
     time.sleep(2)
 
   def defend(self):
     '''Take no damage for a turn'''
     display.blit(narrator_box, (0,300))
-    message_display("You take no damage", 70, 400)
+    message_display("You take no damage", 60, 400)
     pygame.display.update()
     time.sleep(2)
 
@@ -92,12 +92,12 @@ class User(pygame.sprite.Sprite):
     chance = random.choice(luck)
     if chance == 0:
       display.blit(narrator_box, (0,300))
-      message_display("You trip and fail to flee", 70, 400)
+      message_display("You trip and fail to flee", 60, 400)
       pygame.display.update()
       time.sleep(2)
     else:
       display.blit(narrator_box,(0,300))
-      message_display("You knock down some furniture and successfully escape", 70, 400)
+      message_display("You knock down some furniture and successfully escape", 60, 400)
       pygame.display.update()
       time.sleep(2)
       count += 1
@@ -105,7 +105,7 @@ class User(pygame.sprite.Sprite):
   def defend(self):
     '''Take no damage for a turn'''
     display.blit(narrator_box, (0,300))
-    message_display("Opponent defends", 70, 400)
+    message_display("Opponent defends", 60, 400)
     pygame.display.update()
     time.sleep(2)
 
@@ -127,16 +127,16 @@ class Child(pygame.sprite.Sprite):
     damage = self.atk
     you.health -= damage
     display.blit(narrator_box,(0,300))
-    message_display("Opponent attacks!", 70, 400)
-    message_display(f"You take {damage} damage", 70, 425)
-    message_display(f"Your health is now {you.health}", 70, 450)
+    message_display("Opponent attacks!", 60, 400)
+    message_display(f"You take {damage} damage", 60, 425)
+    message_display(f"Your health is now {you.health}", 60, 450)
     pygame.display.update()
     time.sleep(2)
 
   def defend(self):
     '''Take no damage for a turn'''
     display.blit(narrator_box, (0,300))
-    message_display("Opponent defends", 70, 400)
+    message_display("Opponent defends", 60, 400)
     pygame.display.update()
     time.sleep(2)
 
@@ -157,16 +157,16 @@ class Employee1(pygame.sprite.Sprite):
     damage = self.atk
     you.health -= damage
     display.blit(narrator_box,(0,300))
-    message_display("Opponent attacks!", 70, 400)
-    message_display(f"You take {damage} damage", 70, 425)
-    message_display(f"Your health is now {you.health}", 70, 450)
+    message_display("Opponent attacks!", 60, 400)
+    message_display(f"You take {damage} damage", 60, 425)
+    message_display(f"Your health is now {you.health}", 60, 450)
     pygame.display.update()
     time.sleep(2)
 
   def defend(self):
     '''Take no damage for a turn'''
     display.blit(narrator_box, (0,300))
-    message_display("Opponent defends", 70, 400)
+    message_display("Opponent defends", 60, 400)
     pygame.display.update()
     time.sleep(2)
 
@@ -187,16 +187,16 @@ class Employee2(pygame.sprite.Sprite):
     damage = self.atk
     you.health -= damage
     display.blit(narrator_box,(0,300))
-    message_display("Opponent attacks!", 70, 400)
-    message_display(f"You take {damage} damage", 70, 425)
-    message_display(f"Your health is now {you.health}", 70, 450)
+    message_display("Opponent attacks!", 60, 400)
+    message_display(f"You take {damage} damage", 60, 425)
+    message_display(f"Your health is now {you.health}", 60, 450)
     pygame.display.update()
     time.sleep(2)
 
   def defend(self):
     '''Take no damage for a turn'''
     display.blit(narrator_box, (0,300))
-    message_display("Opponent defends", 70, 400)
+    message_display("Opponent defends", 60, 400)
     pygame.display.update()
     time.sleep(2)
 
@@ -217,16 +217,16 @@ class Employee3(pygame.sprite.Sprite):
     damage = self.atk
     you.health -= damage
     display.blit(narrator_box,(0,300))
-    message_display("Opponent attacks!", 70, 400)
-    message_display(f"You take {damage} damage", 70, 425)
-    message_display(f"Your health is now {you.health}", 70, 450)
+    message_display("Opponent attacks!", 60, 400)
+    message_display(f"You take {damage} damage", 60, 425)
+    message_display(f"Your health is now {you.health}", 60, 450)
     pygame.display.update()
     time.sleep(2)
 
   def defend(self):
     '''Take no damage for a turn'''
     display.blit(narrator_box, (0,300))
-    message_display("Opponent defends", 70, 400)
+    message_display("Opponent defends", 60, 400)
     pygame.display.update()
     time.sleep(2)
 
@@ -276,7 +276,7 @@ def win_fight():
   display.fill(black)
   you.draw()
   display.blit(narrator_box, (0,300))
-  message_display("You Win!", 70,400)
+  message_display("You Win!", 60,400)
   pygame.display.update()
   time.sleep(2)
 
@@ -284,13 +284,13 @@ def scene1():
   '''opening introduction'''
   display.blit(op_back,(0,0))
   display.blit(narrator_box, (0,300))
-  message_display("It was a bright and sunny day.", 70, 400)
+  message_display("It was a bright and sunny day.", 60, 400)
 
 def scene2():
   '''opening introduction'''
   display.blit(op_back, (0,0))
   display.blit(narrator_box, (0,300))
-  message_display("A perfect day for furniture shopping.", 70, 400)
+  message_display("A perfect day for furniture shopping.", 60, 400)
 
 def scene3():
   '''Cue Ikea'''
@@ -300,7 +300,7 @@ def scene4():
   '''More Introduction'''
   display.blit(storefront, (0,0)) 
   display.blit(narrator_box, (0,300))
-  message_display("Ikea: The best place for interior decorating", 70, 400)
+  message_display("Ikea: The best place for interior decorating", 60, 400)
 
 def scene5():
   '''First Map'''
@@ -316,14 +316,14 @@ def scene7():
   display.blit(entrance_back, (0,0))
   you.draw()
   display.blit(you_talk,(0,300))
-  message_display("Wow, I sure hope I don't get lost in here", 70, 400)
+  message_display("Wow, I sure hope I don't get lost in here", 60, 400)
 
 def scene8():
   '''Scene 6 Continued'''
   display.blit(entrance_back, (0,0))
   you.draw()
   display.blit(you_talk,(0,300))
-  message_display("It's not like I'm going to have to fight anyone...", 70, 400)
+  message_display("It's not like I'm going to have to fight anyone...", 60, 400)
 
 def scene9():
   '''Living Room Map'''
@@ -339,14 +339,14 @@ def scene11():
   display.blit(living_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
-  message_display("Hmm, This couch is nice..", 70, 400)
+  message_display("Hmm, This couch is nice..", 60, 400)
 
 def scene12():
   '''Still more narration'''
   display.blit(living_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
-  message_display("Must..resist..impulsive buying...", 70, 400)
+  message_display("Must..resist..impulsive buying...", 60, 400)
 
 def scene13():
   '''Right before fight scene'''
@@ -354,7 +354,7 @@ def scene13():
   you.draw()
   boy.draw()
   display.blit(you_talk, (0,300))
-  message_display("Hey Kid, I was looking at that", 70, 400)
+  message_display("Hey Kid, I was looking at that", 60, 400)
 
 def scene14():
   '''Again, right before fight'''
@@ -362,7 +362,7 @@ def scene14():
   you.draw()
   boy.draw()
   display.blit(child_talk, (0,300))
-  message_display("Mine now. Fight me, you anime wannabe.", 70, 400)
+  message_display("Mine now. Fight me, you anime wannabe.", 60, 400)
 
 def scene15():
   '''introduction to fighting'''
@@ -370,7 +370,7 @@ def scene15():
   you.draw()
   boy.draw()
   display.blit(narrator_box, (0,300))
-  message_display("Welcome to your first fight", 70, 400)
+  message_display("Welcome to your first fight", 60, 400)
 
 def scene16():
   '''intro continued'''
@@ -378,9 +378,9 @@ def scene16():
   you.draw()
   boy.draw()
   display.blit(narrator_box, (0,300))
-  message_display("Hit the Up-Arrow Key to Attack.", 70, 375)
-  message_display("Hit the Down-Arrow Key to Defend", 70, 420)
-  message_display("Hit the Right-Arrow Key to Flee", 70, 465)
+  message_display("Hit the Up-Arrow Key to Attack.", 60, 375)
+  message_display("Hit the Down-Arrow Key to Defend", 60, 420)
+  message_display("Hit the Right-Arrow Key to Flee", 60, 465)
 
 def scene17():
   '''choice input'''
@@ -388,7 +388,7 @@ def scene17():
   you.draw()
   boy.draw()
   display.blit(narrator_box,(0,300))
-  message_display("Make your choice:", 70, 400)
+  message_display("Make your choice:", 60, 400)
 
 def scene19():
   '''After Fight'''
@@ -396,8 +396,8 @@ def scene19():
   display.blit(living_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
-  message_display("Phew, that was easy", 70, 400)
-  message_display("Sure hope I don't have to do that again", 70, 420)
+  message_display("Phew, that was easy", 60, 400)
+  message_display("Sure hope I don't have to do that again", 60, 420)
   count += 1
 
 def scene20():
@@ -414,7 +414,7 @@ def scene22():
   display.blit(dining_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
-  message_display("I definitely need another table", 70, 400)
+  message_display("I definitely need another table", 60, 400)
 
 def scene23():
   '''More narration'''
@@ -422,7 +422,7 @@ def scene23():
   you.draw()
   girl.draw()
   display.blit(child_talk, (0,300))
-  message_display("What a loser! You're looking at tables.", 70, 400)
+  message_display("What a loser! You're looking at tables.", 60, 400)
 
 def scene24():
   '''yet more narration'''
@@ -430,8 +430,8 @@ def scene24():
   you.draw()
   girl.draw()
   display.blit(you_talk, (0,300))
-  message_display("Are you kidding me??", 70, 400)
-  message_display("Where are all these kids coming from???", 70, 400)
+  message_display("Are you kidding me??", 60, 400)
+  message_display("Where are all these kids coming from???", 60, 400)
 
 def scene25():
   '''second fight scene'''
@@ -439,7 +439,7 @@ def scene25():
   you.draw()
   girl.draw()
   display.blit(narrator_box, (0,300))
-  message_display("Make your choice: ", 70, 400)
+  message_display("Make your choice: ", 60, 400)
 
 def scene27():
   '''After fight scene'''
@@ -447,7 +447,7 @@ def scene27():
   display.blit(dining_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
-  message_display("This time I really hope I don't have to do that again", 70, 400)
+  message_display("This time I really hope I don't have to do that again", 60, 400)
   count += 1
 
 def scene28():
@@ -464,14 +464,14 @@ def scene30():
   display.blit(bed_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
-  message_display("Congratulations on winning your first two fights!", 70, 400)
+  message_display("Congratulations on winning your first two fights!", 60, 400)
 
 def scene31():
   '''gift from the author'''
   display.blit(bed_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
-  message_display("Since you did so well, here's a gift! :)", 70, 400)
+  message_display("Since you did so well, here's a gift! :)", 60, 400)
   you.health = 60
   you.atk = 3
 
@@ -480,17 +480,85 @@ def scene32():
   display.blit(bed_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
-  message_display(f"Health is now {you.health}", 70, 390)
-  message_display(f"Attack Power is now {you.atk}", 70, 420)
+  message_display(f"Health is now {you.health}", 60, 390)
+  message_display(f"Attack Power is now {you.atk}", 60, 420)
 
 def scene33():
   '''good luck'''
   display.blit(bed_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
-  message_display("To be able to go back home, you must fight", 70, 390)
-  message_display("your way out", 70, 420)
-  message_display("Good Luck, grasshopper", 70, 450)
+  message_display("To be able to go back home, you must fight", 60, 390)
+  message_display("your way out", 60, 420)
+  message_display("Good Luck, grasshopper", 60, 450)
+
+def scene34():
+  '''nap and replenish energy'''
+  display.blit(bed_back, (0,0))
+  you.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("For now, you nap on the super comfy bed", 60, 390)
+  message_display("to replenish your energy", 60, 420)
+
+def scene35():
+  '''bedroom storage map'''
+  display.fill(black)
+  display.blit(bedroom_storage, (0,0))
+
+def scene36():
+  '''bedroom storage background'''
+  display.blit(bstorage_back, (0,0))
+
+def scene37():
+  '''bstorage narration'''
+  display.blit(bstorage_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("owo what's this", 60, 400)
+
+def scene38():
+  '''more bstorage narration'''
+  display.blit(bstorage_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("I could fit so many things in these...", 60, 400)
+
+def scene39():
+  '''yet more bstorage narration'''
+  display.blit(bstorage_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("My anime figurine collection...", 60, 390)
+  message_display("My Fall Out Boy posters...", 60, 420)
+  message_display("My CNCO merch...", 60, 450)
+
+def scene40():
+  '''even more yet more bstorage narration'''
+  display.blit(bstorage_back, (0,0))
+  you.draw()
+  emma.draw()
+  display.blit(emma_talk, (0,300))
+  message_display("You look like you would be a good employee here", 60, 400)
+
+def scene41():
+  '''still more even more yet more narration'''
+  display.blit(bstorage_back, (0,0))
+  you.draw()
+  emma.draw()
+  display.blit(you_talk, (0,300))
+  message_display("Um No, I don't think so", 60, 400)
+
+def scene42():
+  scene40()
+
+def scene43():
+  '''right before fight scene'''
+  display.blit(bstorage_back, (0,0))
+  you.draw()
+  emma.draw()
+  display.blit(you_talk, (0,300))
+  message_display("Why can't people leave me alone today??", 60, 400)
+
 
 #game loop escape
 escaped = False
@@ -511,7 +579,7 @@ while not escaped:
     pygame.display.update()
   
   if count == 0:
-    message_display("Hit SPACE to continue", 70, 400)
+    message_display("Hit SPACE to continue", 60, 400)
     pygame.display.update()
   elif count == 1:
     scene1()
@@ -596,6 +664,26 @@ while not escaped:
     scene32()
   elif count == 33:
     scene33()
+  elif count == 34:
+    scene34()
+  elif count == 35:
+    scene35()
+  elif count == 36:
+    scene36()
+  elif count == 37:
+    scene37()
+  elif count == 38:
+    scene38()
+  elif count == 39:
+    scene39()
+  elif count == 40:
+    scene40()
+  elif count == 41:
+    scene41()
+  elif count == 42:
+    scene42()
+  elif count == 43:
+    scene43()
 
 pygame.quit()
 quit()
