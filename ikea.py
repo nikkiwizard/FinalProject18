@@ -559,6 +559,14 @@ def scene43():
   display.blit(you_talk, (0,300))
   message_display("Why can't people leave me alone today??", 60, 400)
 
+def scene44():
+  '''third fight scene'''
+  display.fill(black)
+  you.draw()
+  emma.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Make your choice: ", 60, 400)
+
 
 #game loop escape
 escaped = False
@@ -581,6 +589,7 @@ while not escaped:
   if count == 0:
     message_display("Hit SPACE to continue", 60, 400)
     pygame.display.update()
+    count += 1
   elif count == 1:
     scene1()
   elif count == 2:
@@ -684,6 +693,17 @@ while not escaped:
     scene42()
   elif count == 43:
     scene43()
+  elif count == 44:
+    scene44()
+    pygame.display.update()
+    time.sleep(2)
+    count += 1
+  elif count == 45:
+    opponent_choice(emma)
+    choice(key, emma)
+    if emma.health == 0:
+      win_fight()
+      count += 1
 
 pygame.quit()
 quit()
