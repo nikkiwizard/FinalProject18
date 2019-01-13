@@ -650,6 +650,36 @@ def scene57():
 
 def scene58():
   '''developer's gift!'''
+  display.fill(black)
+  display.blit(workspaces, (0,0))
+  you.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Congratulations on getting halfway through!", 60, 400)
+
+def scene59():
+  '''developer's gift!!'''
+  display.fill(black)
+  display.blit(workspaces, (0,0))
+  you.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("As you make your way to the workspaces...", 60, 400)
+
+def scene60():
+  display.fill(black)
+  display.blit(workspaces, (0,0))
+  you.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Have this gift as a token!", 60, 400)
+  you.health = 70
+  you.atk = 7
+
+def scene61():
+  display.fill(black)
+  display.blit(workspaces, (0,0))
+  you.draw()
+  display.blit(narrator_box, (0,300))
+  message_display(f"Health is now {you.health}", 60, 390)
+  message_display(f"Attack Power is now {you.atk}", 60, 420)")
 
 #game loop escape
 escaped = False
