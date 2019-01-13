@@ -43,6 +43,7 @@ living_back = pygame.image.load("Backgrounds/Living_Back.png")
 dining_back = pygame.image.load("Backgrounds/Dining_Back.png")
 bed_back = pygame.image.load("Backgrounds/Bedroom_Back.png")
 bstorage_back = pygame.image.load("Backgrounds/bedroomstorage_back.png")
+bath_back1 = pygame.image.load("Backgrounds/bathroom1_back.png")
 '''map pictures'''
 entrance = pygame.image.load("Maps/Entrance.png")
 living_room = pygame.image.load("Maps/Living_Room.png")
@@ -567,6 +568,44 @@ def scene44():
   display.blit(narrator_box, (0,300))
   message_display("Make your choice: ", 60, 400)
 
+def scene46():
+  '''after third fight'''
+  display.blit(bstorage_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("Maybe it's time I dye my hair a normal color...", 60, 400)
+  message_display("People will finally leave me alone.", 60, 430)
+
+def scene47():
+  '''bathroom map'''
+  display.fill(black)
+  display.blit(bathroom, (0,0))
+
+def scene48():
+  '''bathroom background'''
+  display.blit(bath_back1, (0,0))
+
+def scene49():
+  '''bathroom narration'''
+  display.blit(bath_back1, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("OMG This curtain is totes cute.", 60, 400)
+
+def scene50():
+  '''more bathroom narration'''
+  display.blit(bath_back1, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("Hmm but my bathroom walls are green..", 60, 400)
+  message_display("It'd look like too much Christmas.", 60, 430)
+
+def scene51():
+  '''even more bathroom narration'''
+  display.blit(bath_back1, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("Maybe I need some professional help.",  60, 400)
 
 #game loop escape
 escaped = False
@@ -704,6 +743,18 @@ while not escaped:
     if emma.health == 0:
       win_fight()
       count += 1
+  elif count == 46:
+    scene46()
+  elif count == 47:
+    scene47()
+  elif count == 48:
+    scene48()
+  elif count == 49:
+    scene49()
+  elif count == 50:
+    scene50()
+  elif count == 51:
+    scene51()
 
 pygame.quit()
 quit()
