@@ -9,6 +9,7 @@ pygame.init()
 #color variables
 blue = (20,0,249)
 black = (0,0,0)
+white = (255,255,255)
 
 #window variables
 display_width = 800
@@ -242,7 +243,6 @@ girl = Child(girl_img, 3)
 emma = Employee1(emma_img, 12)
 mason = Employee1(mason_img, 12)
 
-
 def text_messages(text,font):
   '''Render the text in color and return the rectangle'''
   text_surface = font.render(text, True, blue)
@@ -284,6 +284,14 @@ def win_fight():
   message_display("You Win!", 60,400)
   pygame.display.update()
   time.sleep(2)
+
+def no_health():
+  display.fill(black)
+  message_display("You Lose", 350, 250)
+  message_display("Hit the Spacebar to play again", 350, 300)
+  message_display("If Not, Hit the X in the corner to exit", 350, 320)
+  pygame.display.update()
+  count = 0
 
 def scene1():
   '''opening introduction'''
@@ -375,7 +383,9 @@ def scene15():
   you.draw()
   boy.draw()
   display.blit(narrator_box, (0,300))
-  message_display("Welcome to your first fight", 60, 400)
+  message_display("Welcome to your first fight", 60, 390)
+  message_display("You must be quick!(Keep hitting the arrow keys)", 60, 420)
+  message_display("Or the opponent will keep attacking!!!", 60, 450)
 
 def scene16():
   '''intro continued'''
@@ -386,6 +396,7 @@ def scene16():
   message_display("Hit the Up-Arrow Key to Attack.", 60, 375)
   message_display("Hit the Down-Arrow Key to Defend", 60, 420)
   message_display("Hit the Right-Arrow Key to Flee", 60, 465)
+  message_display("Hit the space bar to continue")
 
 def scene17():
   '''choice input'''
@@ -753,8 +764,8 @@ while not escaped:
     if boy.health == 0:
       win_fight()
       count += 1
-    #if you.health == 0:
-      #no_health()
+    if you.health <= 0:
+      no_health()
   elif count == 19:
     scene19()
     pygame.display.update()
@@ -779,8 +790,8 @@ while not escaped:
     if girl.health == 0:
       win_fight()
       count += 1
-    #if you.health == 0:
-      #no_health()
+    if you.health <= 0:
+      no_health()
   elif count == 27:
     scene27()
     pygame.display.update()
@@ -827,8 +838,8 @@ while not escaped:
     if emma.health == 0:
       win_fight()
       count += 1
-    #if you.health == 0:
-      #no_health()
+    if you.health <= 0:
+      no_health()
   elif count == 46:
     scene46()
   elif count == 47:
@@ -856,8 +867,8 @@ while not escaped:
     if mason.health == 0:
       win_fight()
       count += 1
-    #if you.health == 0:
-      #no_health()
+    if you.health <= 0:
+      no_health()
   elif count == 56:
     scene56()
   elif count == 57:
