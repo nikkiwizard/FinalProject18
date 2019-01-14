@@ -47,6 +47,7 @@ bed_back = pygame.image.load("Backgrounds/Bedroom_Back.png")
 bstorage_back = pygame.image.load("Backgrounds/bedroomstorage_back.png")
 bath_back1 = pygame.image.load("Backgrounds/bathroom1_back.png")
 bath_back2 = pygame.image.load("Backgrounds/bathroom2_back.png")
+work_back = pygame.image.load("Backgrounds/workspace_back.png")
 '''map pictures'''
 entrance = pygame.image.load("Maps/Entrance.png")
 living_room = pygame.image.load("Maps/Living_Room.png")
@@ -649,24 +650,18 @@ def scene57():
   display.blit(workspaces, (0,0))
 
 def scene58():
+  '''workspace background'''
+  display.blit(work_back, (0,0))
+
+def scene59():
   '''developer's gift!'''
-  display.fill(black)
-  display.blit(workspaces, (0,0))
+  display.blit(work_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display("Congratulations on getting halfway through!", 60, 400)
 
-def scene59():
-  '''developer's gift!!'''
-  display.fill(black)
-  display.blit(workspaces, (0,0))
-  you.draw()
-  display.blit(narrator_box, (0,300))
-  message_display("As you make your way to the workspaces...", 60, 400)
-
 def scene60():
-  display.fill(black)
-  display.blit(workspaces, (0,0))
+  display.blit(work_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display("Have this gift as a token!", 60, 400)
@@ -674,12 +669,23 @@ def scene60():
   you.atk = 7
 
 def scene61():
-  display.fill(black)
-  display.blit(workspaces, (0,0))
+  display.blit(work_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display(f"Health is now {you.health}", 60, 390)
   message_display(f"Attack Power is now {you.atk}", 60, 420)
+
+def scene62():
+  '''developer's gift!!'''
+  display.blit(work_back, (0,0))
+  you.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Being in the workspaces fills you with productivity", 60, 400)
+
+def scene63():
+  '''kitchen map'''
+  display.fill(black)
+  display.blit(kitchen, (0,0))
 
 #game loop escape
 escaped = False
@@ -846,7 +852,20 @@ while not escaped:
       count += 1
   elif count == 56:
     scene56()
-
+  elif count == 57:
+    scene57()
+  elif count == 58:
+    scene58()
+  elif count == 59:
+    scene59()
+  elif count == 60:
+    scene60()
+  elif count == 61:
+    scene61()
+  elif count == 62:
+    scene62()
+  elif count == 63:
+    scene63()
 
 pygame.quit()
 quit()
