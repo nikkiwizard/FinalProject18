@@ -679,7 +679,7 @@ def scene61():
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display(f"Health is now {you.health}", 60, 390)
-  message_display(f"Attack Power is now {you.atk}", 60, 420)")
+  message_display(f"Attack Power is now {you.atk}", 60, 420)
 
 #game loop escape
 escaped = False
