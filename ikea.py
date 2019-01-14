@@ -753,6 +753,8 @@ while not escaped:
     if boy.health == 0:
       win_fight()
       count += 1
+    #if you.health == 0:
+      #no_health()
   elif count == 19:
     scene19()
     pygame.display.update()
@@ -777,6 +779,8 @@ while not escaped:
     if girl.health == 0:
       win_fight()
       count += 1
+    #if you.health == 0:
+      #no_health()
   elif count == 27:
     scene27()
     pygame.display.update()
@@ -823,6 +827,8 @@ while not escaped:
     if emma.health == 0:
       win_fight()
       count += 1
+    #if you.health == 0:
+      #no_health()
   elif count == 46:
     scene46()
   elif count == 47:
@@ -850,6 +856,8 @@ while not escaped:
     if mason.health == 0:
       win_fight()
       count += 1
+    #if you.health == 0:
+      #no_health()
   elif count == 56:
     scene56()
   elif count == 57:
