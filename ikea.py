@@ -55,6 +55,7 @@ bath_back1 = pygame.image.load("Backgrounds/bathroom1_back.png")
 bath_back2 = pygame.image.load("Backgrounds/bathroom2_back.png")
 work_back = pygame.image.load("Backgrounds/workspace_back.png")
 kitchen_back = pygame.image.load("Backgrounds/Kitchen_Back.png")
+childrens_back = pygame.image.load("Backgrounds/Childrens_Back.png")
 '''map pictures'''
 entrance = pygame.image.load("Maps/Entrance.png")
 living_room = pygame.image.load("Maps/Living_Room.png")
@@ -830,6 +831,57 @@ def scene75():
   display.fill(black)
   display.blit(childrens, (0,0))
 
+def scene76():
+  display.blit(childrens_back, (0,0)
+  you.attack = 8
+
+def scene77():
+  display.blit(childrens_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("I wish I was still a kid...", 60, 400)
+
+def scene78():
+  display.blit(childrens_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("Imagine having a bunk bed that looks like a house", 60, 400)
+
+def scene79():
+  display.blit(childrens_back, (0,0))
+  you.draw()
+  lilia.draw()
+  display.blit(lilia_talk, (0,300))
+  message_display("If you stay here forever, you can have one!", 60, 400)
+
+def scene80():
+  display.blit(childrens_back, (0,0))
+  you.draw()
+  lilia.draw()
+  display.blit(lilia_talk, (0,300))
+  message_display("Please stay. Stay with us. Forever", 60, 400)
+
+def scene81():
+  display.blit(childrens_back, (0,0))
+  you.draw()
+  lilia.draw()
+  display.blit(you_talk, (0,300))
+  message_display("Yikes, clingy much?", 60, 400)
+
+def scene81():
+  display.blit(childrens_back,(0,0))
+  you.draw()
+  lilia.draw()
+  display.blit(you_talk, (0,300))
+  message_display("That's a no from me, fam", 60, 400)
+
+def scene82():
+  display.fill(black)
+  you.draw()
+  lilia.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Make your choice: ", 60, 400)
+
 #game loop escape
 escaped = False
 
@@ -893,7 +945,7 @@ while not escaped:
   elif count == 18:
     opponent_choice(boy)
     choice(key, boy)
-    if boy.health == 0:
+    if boy.health <= 0:
       win_fight()
       count += 1
     if you.health <= 0:
@@ -919,7 +971,7 @@ while not escaped:
   elif count == 26:
     opponent_choice(girl)
     choice(key, girl)
-    if girl.health == 0:
+    if girl.health <= 0:
       win_fight()
       count += 1
     if you.health <= 0:
@@ -967,7 +1019,7 @@ while not escaped:
   elif count == 45:
     opponent_choice(emma)
     choice(key, emma)
-    if emma.health == 0:
+    if emma.health <= 0:
       win_fight()
       count += 1
     if you.health <= 0:
@@ -996,7 +1048,7 @@ while not escaped:
   elif count == 55:
     opponent_choice(mason)
     choice(key, mason)
-    if mason.health == 0:
+    if mason.health <= 0:
       win_fight()
       count += 1
     if you.health <= 0:
@@ -1036,7 +1088,7 @@ while not escaped:
   elif count == 71:
     opponent_choice(peter)
     choice(key, peter)
-    if peter.health == 0:
+    if peter.health <= 0:
       win_fight()
       count += 1
     if you.health <= 0:
@@ -1049,6 +1101,30 @@ while not escaped:
     scene74()
   elif count == 75:
     scene75()
+  elif count == 76:
+    scene76()
+  elif count == 77:
+    scene77()
+  elif count == 78:
+    scene78()
+  elif count == 79:
+    scene79()
+  elif count == 80:
+    scene80()
+  elif count == 81:
+    scene81()
+  elif count == 82:
+    scene82()
+    pygame.display.update()
+    count += 1
+  elif count == 83:
+    opponent_choice(lilia)
+    choice(key, lilia)
+    if lilia.health <= 0:
+      win_fight()
+      count += 1
+    if you.health <= 0:
+      no_health()
 
 pygame.quit()
 quit()
