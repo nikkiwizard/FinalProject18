@@ -601,7 +601,7 @@ def scene39():
   display.blit(you_talk, (0,300))
   message_display("My anime figurine collection...", 60, 390)
   message_display("My Fall Out Boy posters...", 60, 420)
-  message_display("My CNCO merch...", 60, 450)
+  message_display("My Doctor Who merch...", 60, 450)
 
 def scene40():
   '''even more yet more bstorage narration'''
@@ -802,6 +802,33 @@ def scene70():
   peter.draw()
   display.blit(narrator_box, (0,300))
   message_display("Make your choice: ", 60, 400)
+
+def scene72():
+  '''after fifth fight scene'''
+  display.blit(kitchen_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("Where's an exit when you need one?!", 60, 400)
+
+def scene73():
+  '''after fifth fight scene part deux'''
+  display.blit(kitchen_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("*I'm in danger*", 60, 400)
+  message_display("I've never seen my life flash before my eyes like today", 60, 400)
+
+def scene74():
+  '''after fifth fight scene part tre'''
+  display.blit(kitchen_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("Except maybe that one time before a history test XD", 60, 400)
+
+def scene75():
+  '''children's ikea map'''
+  display.fill(black)
+  display.blit(childrens, (0,0))
 
 #game loop escape
 escaped = False
@@ -1014,6 +1041,14 @@ while not escaped:
       count += 1
     if you.health <= 0:
       no_health()
+  elif count == 72:
+    scene72()
+  elif count == 73:
+    scene73()
+  elif count == 74:
+    scene74()
+  elif count == 75:
+    scene75()
 
 pygame.quit()
 quit()
