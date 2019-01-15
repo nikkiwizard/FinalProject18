@@ -32,15 +32,17 @@ girl_img = pygame.image.load("Sprites/Girl_v2.png")
 boy_img = pygame.image.load("Sprites/Boy_v2.png")
 emma_img = pygame.image.load("Sprites/Emma_v2.png")
 mason_img = pygame.image.load("Sprites/Mason_v2.png")
-#peter_img = pygame.image.load("Sprites/Peter_v2.png")
-#lilia_img = pygame.image.load("Sprites/Lilia_v2.png")
+peter_img = pygame.image.load("Sprites/Peter_v2.png")
+lilia_img = pygame.image.load("Sprites/Lilia_v2.png")
 #nikki_img = pygame.image.load("Sprites/Nikki_v2.png")
 '''dialogue boxes'''
-narrator_box = pygame.image.load("Backgrounds/Narrator_Box.png")
-you_talk = pygame.image.load("Backgrounds/You_Dialogue.png")
-child_talk = pygame.image.load("Backgrounds/Child_Dialogue.png")
-emma_talk = pygame.image.load("Backgrounds/Emma_Dialogue.png")
-mason_talk = pygame.image.load("Backgrounds/Mason_Dialogue.png")
+narrator_box = pygame.image.load("Backgrounds/Dialogue/Narrator_Box.png")
+you_talk = pygame.image.load("Backgrounds/Dialogue/You_Dialogue.png")
+child_talk = pygame.image.load("Backgrounds/Dialogue/Child_Dialogue.png")
+emma_talk = pygame.image.load("Backgrounds/Dialogue/Emma_Dialogue.png")
+mason_talk = pygame.image.load("Backgrounds/Dialogue/Mason_Dialogue.png")
+peter_talk = pygame.image.load("Backgrounds/Dialogue/Peter_Dialogue.png")
+lilia_talk = pygame.image.load("Backgrounds/Dialogue/Lilia_Dialogue.png")
 '''backgrounds'''
 op_back = pygame.image.load("Backgrounds/Opening_Background.png")
 storefront = pygame.image.load("Backgrounds/Ikea_Storefront.png")
@@ -270,14 +272,20 @@ class Manager(pygame.sprite.Sprite):
     pygame.display.update()
     time.sleep(2)
 
+  def heal(self):
+    self.health += 5
+    display.blit(narrator_box, (0,300)
+    message_display("Heal Power Activated!", 60, 400)
+    message_display(f"Nikki's health is now {self.health}!", 60, 425)
+
 #class assignments
 you = User()
 boy = Child(boy_img, 3)
 girl = Child(girl_img, 3)
 emma = Employee1(emma_img, 12)
 mason = Employee1(mason_img, 12)
-#peter = Employee2(peter_img, 25)
-#lilia = Employee3(lilia_img, 30)
+peter = Employee2(peter_img, 25)
+lilia = Employee3(lilia_img, 30)
 #nikki = Manager(nikki_img)
 
 def text_messages(text,font):
@@ -313,6 +321,16 @@ def opponent_choice(character):
     character.attack()
   elif choice == "defend":
     character.defend()
+
+def nikki_choice():
+  options = ["fight", "defend","heal"]
+  choice = random.choice(options)
+  if choice == "fight":
+    nikki.attack()
+  elif choice == "defend":
+    nikki.defend()
+  elif choice == "heal":
+    nikki.heal()
 
 def win_fight():
   display.fill(black)
@@ -753,6 +771,38 @@ def scene66():
   display.blit(you_talk, (0,0))
   message_display("I'd decorate my own kitchen better", 60, 400)
 
+def scene67():
+  '''even more narration'''
+  display.blit(kitchen_back, (0,0))
+  you.draw()
+  peter.draw()
+  display.blit(peter_talk, (0,300))
+  message_display("Oh, I'll help you decorate! ;)", 60, 400)
+
+def scene68():
+  '''yet some more narration'''
+  display.blit(kitchen_back, (0,0))
+  you.draw()
+  peter.draw()
+  display.blit(you_talk, (0,300))
+  message_display("No thank you! Gotta blast!", 60, 400)
+
+def scene69():
+  '''right before fight scene 5'''
+  display.blit(kitchen_back, (0,0))
+  you.draw()
+  peter.draw()
+  display.blit(peter_talk, (0,300))
+  message_display("Awww, but I promise you'll have a good time *pouts*", 60, 400)
+
+def scene70():
+  '''fifth fight scene commence!!!'''
+  display.fill(black)
+  you.draw()
+  peter.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Make your choice: ", 60, 400)
+
 #game loop escape
 escaped = False
 
@@ -946,6 +996,24 @@ while not escaped:
     scene65()
   elif count == 66:
     scene66()
+  elif count == 67:
+    scene67()
+  elif count == 68:
+    scene68()
+  elif count == 69:
+    scene69()
+  elif count == 70:
+    scene70()
+    pygame.display.update()
+    count += 1
+  elif count == 71:
+    opponent_choice(peter)
+    choice(key, peter)
+    if peter.health == 0:
+      win_fight()
+      count += 1
+    if you.health <= 0:
+      no_health()
 
 pygame.quit()
 quit()
