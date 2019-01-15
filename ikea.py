@@ -49,6 +49,7 @@ bstorage_back = pygame.image.load("Backgrounds/bedroomstorage_back.png")
 bath_back1 = pygame.image.load("Backgrounds/bathroom1_back.png")
 bath_back2 = pygame.image.load("Backgrounds/bathroom2_back.png")
 work_back = pygame.image.load("Backgrounds/workspace_back.png")
+kitchen_back = pygame.image.load("Backgrounds/Kitchen_Back.png")
 '''map pictures'''
 entrance = pygame.image.load("Maps/Entrance.png")
 living_room = pygame.image.load("Maps/Living_Room.png")
@@ -698,6 +699,24 @@ def scene63():
   display.fill(black)
   display.blit(kitchen, (0,0))
 
+def scene64():
+  '''kitchen background'''
+  display.blit(kitchen_back, (0,0))
+
+def scene65():
+  '''kitchen narration'''
+  display.blit(kitchen_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,0))
+  message_display("If only I had a significant other that cooked...", 60, 400)
+
+def scene66():
+  '''more kitchen narration'''
+  display.blit(kitchen_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,0))
+  message_display("I'd decorate my own kitchen better", 60, 400)
+
 #game loop escape
 escaped = False
 
@@ -885,6 +904,12 @@ while not escaped:
     scene62()
   elif count == 63:
     scene63()
+  elif count == 64:
+    scene64()
+  elif count == 65:
+    scene65()
+  elif count == 66:
+    scene66()
 
 pygame.quit()
 quit()
