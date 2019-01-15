@@ -32,6 +32,9 @@ girl_img = pygame.image.load("Sprites/Girl_v2.png")
 boy_img = pygame.image.load("Sprites/Boy_v2.png")
 emma_img = pygame.image.load("Sprites/Emma_v2.png")
 mason_img = pygame.image.load("Sprites/Mason_v2.png")
+#peter_img = pygame.image.load("Sprites/Peter_v2.png")
+#lilia_img = pygame.image.load("Sprites/Lilia_v2.png")
+#nikki_img = pygame.image.load("Sprites/Nikki_v2.png")
 '''dialogue boxes'''
 narrator_box = pygame.image.load("Backgrounds/Narrator_Box.png")
 you_talk = pygame.image.load("Backgrounds/You_Dialogue.png")
@@ -178,12 +181,12 @@ class Employee1(pygame.sprite.Sprite):
     time.sleep(2)
 
 class Employee2(pygame.sprite.Sprite):
-  def __init__(self, img):
+  def __init__(self, img, hp):
     pygame.sprite.Sprite.__init__(self)
     self.image = img
     self.atk = 10
     self.defense = 7
-    self.health = 25
+    self.health = hp
 
   def draw(self):
     '''blit the avatar on screen'''
@@ -208,12 +211,42 @@ class Employee2(pygame.sprite.Sprite):
     time.sleep(2)
 
 class Employee3(pygame.sprite.Sprite):
-  def __init__(self, img):
+  def __init__(self, img, hp):
     pygame.sprite.Sprite.__init__(self)
     self.image = img
     self.atk = 17
     self.defense = 15
-    self.health = 60
+    self.health = hp
+
+  def draw(self):
+    '''blit the avatar on screen'''
+    display.blit(self.image, (200,200))
+
+  def attack(self):
+    '''single attack the user'''
+    damage = self.atk
+    you.health -= damage
+    display.blit(narrator_box,(0,300))
+    message_display("Opponent attacks!", 60, 400)
+    message_display(f"You take {damage} damage", 60, 425)
+    message_display(f"Your health is now {you.health}", 60, 450)
+    pygame.display.update()
+    time.sleep(2)
+
+  def defend(self):
+    '''Take no damage for a turn'''
+    display.blit(narrator_box, (0,300))
+    message_display("Opponent defends", 60, 400)
+    pygame.display.update()
+    time.sleep(2)
+
+class Manager(pygame.sprite.Sprite):
+  def __init__(self, img):
+    pygame.sprite.Sprite.__init__(self)
+    self.image = img
+    self.atk = 20
+    self.defense = 15
+    self.health = 65
 
   def draw(self):
     '''blit the avatar on screen'''
@@ -243,6 +276,9 @@ boy = Child(boy_img, 3)
 girl = Child(girl_img, 3)
 emma = Employee1(emma_img, 12)
 mason = Employee1(mason_img, 12)
+#peter = Employee2(peter_img, 25)
+#lilia = Employee3(lilia_img, 30)
+#nikki = Manager(nikki_img)
 
 def text_messages(text,font):
   '''Render the text in color and return the rectangle'''
