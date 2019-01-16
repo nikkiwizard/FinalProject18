@@ -261,7 +261,7 @@ class Manager(pygame.sprite.Sprite):
     damage = self.atk
     you.health -= damage
     display.blit(narrator_box,(0,300))
-    message_display("Opponent attacks!", 60, 400)
+    message_display("Nikki attacks!", 60, 400)
     message_display(f"You take {damage} damage", 60, 425)
     message_display(f"Your health is now {you.health}", 60, 450)
     pygame.display.update()
@@ -270,15 +270,18 @@ class Manager(pygame.sprite.Sprite):
   def defend(self):
     '''Take no damage for a turn'''
     display.blit(narrator_box, (0,300))
-    message_display("Opponent defends", 60, 400)
+    message_display("Nikki defends", 60, 400)
     pygame.display.update()
     time.sleep(2)
 
   def heal(self):
+    '''nikki heals herself muahahahah'''
     self.health += 5
     display.blit(narrator_box, (0,300))
     message_display("Nikki Heals!", 60, 400)
     message_display(f"Nikki's health is now {self.health}!", 60, 425)
+    pygame.display.update()
+    time.sleep(2)
 
 #class assignments
 you = User()
