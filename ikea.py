@@ -832,7 +832,7 @@ def scene75():
   display.blit(childrens, (0,0))
 
 def scene76():
-  display.blit(childrens_back, (0,0)
+  display.blit(childrens_back, (0,0))
 
 def scene77():
   display.blit(childrens_back, (0,0))
