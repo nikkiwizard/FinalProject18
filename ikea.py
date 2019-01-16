@@ -344,10 +344,8 @@ def win_fight():
 def no_health():
   display.fill(black)
   message_display("You Lose", 350, 250)
-  message_display("Hit the Spacebar to play again", 250, 300)
-  message_display("If Not, Hit the X in the corner to exit", 250, 320)
+  message_display("Hit the X in the corner to exit", 150, 320)
   pygame.display.update()
-  count = 0
 
 def scene1():
   '''opening introduction'''
@@ -959,6 +957,8 @@ def scene82():
 #game loop escape
 escaped = False
 
+you.health = 2
+
 #game loop
 while not escaped:
   clock.tick(4)
@@ -972,7 +972,7 @@ while not escaped:
   if key[pygame.K_SPACE]:
     print(f"advanced one count {count}")
     count += 1
-  
+
   if count == 0:
     message_display("Hit SPACE to continue", 60, 400)
     pygame.display.update()
@@ -1019,7 +1019,7 @@ while not escaped:
       win_fight()
       count += 1
     if you.health <= 0:
-      no_health()
+      escaped = True
   elif count == 19:
     scene19()
   elif count == 20:
@@ -1043,7 +1043,7 @@ while not escaped:
       win_fight()
       count += 1
     if you.health <= 0:
-      no_health()
+      escaped = True
   elif count == 27:
     scene27()
   elif count == 28:
@@ -1089,7 +1089,7 @@ while not escaped:
       win_fight()
       count += 1
     if you.health <= 0:
-      no_health()
+      escaped = True
   elif count == 46:
     scene46()
   elif count == 47:
@@ -1117,7 +1117,7 @@ while not escaped:
       win_fight()
       count += 1
     if you.health <= 0:
-      no_health()
+      escaped = True
   elif count == 56:
     scene56()
   elif count == 57:
@@ -1148,6 +1148,8 @@ while not escaped:
     scene69()
   elif count == 70:
     scene70()
+    time.sleep(2)
+    count += 1
   elif count == 71:
     opponent_choice(peter)
     choice(key, peter)
@@ -1155,7 +1157,7 @@ while not escaped:
       win_fight()
       count += 1
     if you.health <= 0:
-      no_health()
+      escaped = True
   elif count == 72:
     scene72()
   elif count == 73:
@@ -1185,7 +1187,10 @@ while not escaped:
       win_fight()
       count += 1
     if you.health <= 0:
-      no_health()
+      escaped = True
 
-pygame.quit()
+if you.health <= 0:
+  no_health()
+  time.sleep(10)
+
 quit()
