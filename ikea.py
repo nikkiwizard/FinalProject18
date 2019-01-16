@@ -56,6 +56,7 @@ bath_back2 = pygame.image.load("Backgrounds/bathroom2_back.png")
 work_back = pygame.image.load("Backgrounds/workspace_back.png")
 kitchen_back = pygame.image.load("Backgrounds/Kitchen_Back.png")
 childrens_back = pygame.image.load("Backgrounds/Childrens_Back.png")
+exit_back = pygame.image.load("Backgrounds/Exit_Back.png")
 '''map pictures'''
 entrance = pygame.image.load("Maps/Entrance.png")
 living_room = pygame.image.load("Maps/Living_Room.png")
@@ -66,7 +67,6 @@ bathroom = pygame.image.load("Maps/Bathrooms.png")
 workspaces = pygame.image.load("Maps/Workspaces.png")
 kitchen = pygame.image.load("Maps/Kitchens.png")
 childrens = pygame.image.load("Maps/Children_Section.png")
-final_stage = pygame.image.load("Maps/Exit.png")
 
 class User(pygame.sprite.Sprite):
   def __init__(self):
@@ -352,6 +352,7 @@ def scene1():
   display.blit(op_back,(0,0))
   display.blit(narrator_box, (0,300))
   message_display("It was a bright and sunny day.", 60, 400)
+  message_display("(Hit SPACE to continue)", 60, 470)
   pygame.display.update()
 
 def scene2():
@@ -359,11 +360,13 @@ def scene2():
   display.blit(op_back, (0,0))
   display.blit(narrator_box, (0,300))
   message_display("A perfect day for furniture shopping.", 60, 400)
+  message_display("(Hit SPACE to continue)", 60, 470)
   pygame.display.update()
 
 def scene3():
   '''Cue Ikea'''
   display.blit(storefront, (0,0))
+  message_display("(Hit SPACE to continue)", 60, 470)
   pygame.display.update()
 
 def scene4():
@@ -896,10 +899,12 @@ def scene75():
   pygame.display.update()
 
 def scene76():
+  '''children's section background'''
   display.blit(childrens_back, (0,0))
   pygame.display.update()
 
 def scene77():
+  ''''children section narration'''
   display.blit(childrens_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
@@ -908,6 +913,7 @@ def scene77():
   you.atk = 8 
 
 def scene78():
+  ''''more narration'''
   display.blit(childrens_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
@@ -915,6 +921,7 @@ def scene78():
   pygame.display.update()
 
 def scene79():
+  '''more narration'''
   display.blit(childrens_back, (0,0))
   you.draw()
   lilia.draw()
@@ -923,6 +930,7 @@ def scene79():
   pygame.display.update()
 
 def scene80():
+  '''more narration'''
   display.blit(childrens_back, (0,0))
   you.draw()
   lilia.draw()
@@ -931,6 +939,7 @@ def scene80():
   pygame.display.update()
 
 def scene81():
+  '''more narration'''
   display.blit(childrens_back, (0,0))
   you.draw()
   lilia.draw()
@@ -939,6 +948,7 @@ def scene81():
   pygame.display.update()
 
 def scene81():
+  '''right before sixth fight scene'''
   display.blit(childrens_back,(0,0))
   you.draw()
   lilia.draw()
@@ -947,6 +957,7 @@ def scene81():
   pygame.display.update()
 
 def scene82():
+  '''fight numero seis'''
   display.fill(black)
   you.draw()
   lilia.draw()
@@ -954,6 +965,28 @@ def scene82():
   message_display("Make your choice: ", 60, 400)
   pygame.display.update()
   time.sleep(2)
+
+def scene84():
+  '''yay exit signs !!'''
+  display.blit(exit_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("FINALLY!", 60, 400)
+  pygame.display.update()
+
+def scene85():
+  display.blit(exit_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("I can finally leave!!", 60, 400)
+  pygame.display.update()
+
+def scene86():
+  display.blit(exit_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("F R E E D O M", 60, 400)
+  pygame.display.update()
 
 #game loop escape
 escaped = False
@@ -1188,6 +1221,12 @@ while not escaped:
       count += 1
     if you.health <= 0:
       count = 500
+  elif count == 84:
+    scene84()
+  elif count == 85:
+    scene85()
+  elif count == 86:
+    scene86()
   elif count == 500:
     no_health()
 
