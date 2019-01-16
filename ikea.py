@@ -9,7 +9,6 @@ pygame.init()
 #color variables
 blue = (20,0,249)
 black = (0,0,0)
-white = (255,255,255)
 
 #window variables
 display_width = 800
@@ -155,6 +154,7 @@ class Child(pygame.sprite.Sprite):
     time.sleep(2)
 
 class Employee1(pygame.sprite.Sprite):
+  '''Slightly harder opponent'''
   def __init__(self, img, hp):
     pygame.sprite.Sprite.__init__(self)
     self.image = img
@@ -185,6 +185,7 @@ class Employee1(pygame.sprite.Sprite):
     time.sleep(2)
 
 class Employee2(pygame.sprite.Sprite):
+  '''opponent level 2'''
   def __init__(self, img, hp):
     pygame.sprite.Sprite.__init__(self)
     self.image = img
@@ -215,6 +216,7 @@ class Employee2(pygame.sprite.Sprite):
     time.sleep(2)
 
 class Employee3(pygame.sprite.Sprite):
+  '''OPPONENT LEVEL 3: GOOD LUCK'''
   def __init__(self, img, hp):
     pygame.sprite.Sprite.__init__(self)
     self.image = img
@@ -245,6 +247,8 @@ class Employee3(pygame.sprite.Sprite):
     time.sleep(2)
 
 class Manager(pygame.sprite.Sprite):
+  '''now you have to fight the developer, Nikki!'''
+  '''a whole yikes, can you even win? hmmm'''
   def __init__(self, img):
     pygame.sprite.Sprite.__init__(self)
     self.image = img
@@ -307,6 +311,7 @@ def message_display(text, x, y):
   display.blit(text_surf, text_rectangle.center)
 
 def choice(k, opponent):
+  '''waits for keyboard input to fight, defend, or flee'''
   if k[pygame.K_UP]:
     you.attack(opponent)
     return
@@ -320,6 +325,7 @@ def choice(k, opponent):
     return
 
 def opponent_choice(character):
+  '''opponent chooses to fight or defend'''
   options = ["fight", "defend"]
   choice = random.choice(options)
   if choice == "fight":
@@ -328,6 +334,7 @@ def opponent_choice(character):
     character.defend()
 
 def nikki_choice():
+  '''the final boss gets to heal'''
   options = ["fight", "defend","heal"]
   choice = random.choice(options)
   if choice == "fight":
@@ -338,6 +345,7 @@ def nikki_choice():
     nikki.heal()
 
 def win_fight():
+  '''you win! i didn't feel like writing this more than once'''
   display.fill(black)
   you.draw()
   display.blit(narrator_box, (0,300))
@@ -346,6 +354,7 @@ def win_fight():
   time.sleep(2)
 
 def no_health():
+  '''you have no health yet and you lose :('''
   display.fill(black)
   message_display("You Lose", 350, 250)
   message_display("Hit the X in the corner to exit", 125, 320)
@@ -979,6 +988,7 @@ def scene84():
   pygame.display.update()
 
 def scene85():
+  '''hahah you think you can leave'''
   display.blit(exit_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
@@ -986,6 +996,7 @@ def scene85():
   pygame.display.update()
 
 def scene86():
+  '''AHAHAH YOU THINK YOU CAN LEAVE????'''
   display.blit(exit_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
@@ -993,6 +1004,7 @@ def scene86():
   pygame.display.update()
 
 def scene87():
+  '''YOU MAKE LOOK LIKE YOURE LEAVING'''
   display.blit(exit_back, (0,0))
   you.draw(40,200)
   display.blit(narrator_box, (0,300))
@@ -1026,6 +1038,7 @@ def scene87():
   time.sleep(1)
 
 def scene88():
+  '''BUT YOU THOUGHT'''
   display.blit(exit_back, (0,0))
   you.draw(200,200)
   display.blit(nikki_talk, (0,300))
@@ -1034,6 +1047,7 @@ def scene88():
   you.atk = 10
 
 def scene89():
+  '''NO LEAVING ALLOWED'''
   display.blit(exit_back, (0,0))
   you.draw(200,200)
   display.blit(nikki_talk, (0,300))
@@ -1041,6 +1055,7 @@ def scene89():
   pygame.display.update()
 
 def scene90():
+  '''you tell 'em nikki'''
   display.blit(exit_back, (0,0))
   you.draw(200,200)
   nikki.draw()
@@ -1049,6 +1064,7 @@ def scene90():
   pygame.display.update()
 
 def scene91():
+  '''BOSS FIGHT'''
   display.blit(exit_back, (0,0))
   you.draw(200,200)
   nikki.draw()
@@ -1067,6 +1083,7 @@ def scene92():
   time.sleep(2)
 
 def scene94():
+  '''you might be able to leave this time'''
   display.blit(exit_back, (0,0))
   you.draw(200,200)
   display.blit(you_talk(0,300))
@@ -1074,6 +1091,7 @@ def scene94():
   pygame.display.update()
 
 def scene95():
+  '''you go towards the exit'''
   display.blit(exit_back, (0,0))
   you.draw(250,200)
   display.blit(narrator_box, (0,300))
@@ -1160,6 +1178,7 @@ def scene95():
   time.sleep(1)
 
 def scene96():
+  '''thank jesus'''
   display.blit(op_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
@@ -1168,6 +1187,7 @@ def scene96():
 
 
 def scene97():
+  '''yay for winning the game'''
   display.blit(op_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
@@ -1175,6 +1195,7 @@ def scene97():
   pygame.display.update
 
 def scene98():
+  '''play my game again ;)'''
   display.blit(op_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
@@ -1182,6 +1203,7 @@ def scene98():
   pygame.display.update()
 
 def scene99():
+  '''i really just wanted to hit 100 scenes'''
   display.blit(op_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
@@ -1189,6 +1211,7 @@ def scene99():
   pygame.display.update()
 
 def scene100():
+  '''Final Screen'''
   display.blit(op_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
@@ -1202,16 +1225,21 @@ escaped = False
 while not escaped:
   clock.tick(4)
 
+  #if you click the red x in the corner
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       escaped = True
 
+  #if a key is pressed
   key = pygame.key.get_pressed()
 
+  #defining the space bar
   if key[pygame.K_SPACE]:
     print(f"advanced one count {count}")
     count += 1
 
+  #all the scenes and fights
+  #my main logic
   if count == 0:
     message_display("Hit SPACE to continue", 60, 400)
     pygame.display.update()
@@ -1473,7 +1501,7 @@ while not escaped:
     time.sleep(15)
     escaped = True
   elif count == 500:
-    no_health()
+    no_health() #rip
 
 pygame.quit()
 quit()
