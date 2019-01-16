@@ -344,7 +344,7 @@ def win_fight():
 def no_health():
   display.fill(black)
   message_display("You Lose", 350, 250)
-  message_display("Hit the X in the corner to exit", 150, 320)
+  message_display("Hit the X in the corner to exit", 125, 320)
   pygame.display.update()
 
 def scene1():
@@ -953,11 +953,10 @@ def scene82():
   display.blit(narrator_box, (0,300))
   message_display("Make your choice: ", 60, 400)
   pygame.display.update()
+  time.sleep(2)
 
 #game loop escape
 escaped = False
-
-you.health = 2
 
 #game loop
 while not escaped:
@@ -1019,7 +1018,7 @@ while not escaped:
       win_fight()
       count += 1
     if you.health <= 0:
-      escaped = True
+      count = 500
   elif count == 19:
     scene19()
   elif count == 20:
@@ -1043,7 +1042,7 @@ while not escaped:
       win_fight()
       count += 1
     if you.health <= 0:
-      escaped = True
+      count = 500
   elif count == 27:
     scene27()
   elif count == 28:
@@ -1089,7 +1088,7 @@ while not escaped:
       win_fight()
       count += 1
     if you.health <= 0:
-      escaped = True
+      count = 500
   elif count == 46:
     scene46()
   elif count == 47:
@@ -1117,7 +1116,7 @@ while not escaped:
       win_fight()
       count += 1
     if you.health <= 0:
-      escaped = True
+      count = 500
   elif count == 56:
     scene56()
   elif count == 57:
@@ -1157,7 +1156,7 @@ while not escaped:
       win_fight()
       count += 1
     if you.health <= 0:
-      escaped = True
+      count = 500
   elif count == 72:
     scene72()
   elif count == 73:
@@ -1180,6 +1179,7 @@ while not escaped:
     scene81()
   elif count == 82:
     scene82()
+    count += 1
   elif count == 83:
     opponent_choice(lilia)
     choice(key, lilia)
@@ -1187,11 +1187,9 @@ while not escaped:
       win_fight()
       count += 1
     if you.health <= 0:
-      escaped = True
-
-if you.health <= 0:
-  no_health()
-  time.sleep(10)
+      count = 500
+  elif count == 500:
+    no_health()
 
 pygame.quit()
 quit()
