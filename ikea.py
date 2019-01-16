@@ -273,11 +273,11 @@ class Manager(pygame.sprite.Sprite):
     pygame.display.update()
     time.sleep(2)
 
-  def heal(self):
-    self.health += 5
-    display.blit(narrator_box, (0,300)
-    message_display("Heal Power Activated!", 60, 400)
-    message_display(f"Nikki's health is now {self.health}!", 60, 425)
+  #def heal(self):
+    #self.health += 5
+    #display.blit(narrator_box, (0,300)
+    #message_display("Nikki Heals!", 60, 400)
+    #message_display(f"Nikki's health is now {self.health}!", 60, 425)
 
 #class assignments
 you = User()
@@ -833,13 +833,13 @@ def scene75():
 
 def scene76():
   display.blit(childrens_back, (0,0)
-  you.attack = 8
 
 def scene77():
   display.blit(childrens_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("I wish I was still a kid...", 60, 400)
+  you.atk = 8 
 
 def scene78():
   display.blit(childrens_back, (0,0))
