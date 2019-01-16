@@ -34,15 +34,16 @@ emma_img = pygame.image.load("Sprites/Emma_v2.png")
 mason_img = pygame.image.load("Sprites/Mason_v2.png")
 peter_img = pygame.image.load("Sprites/Peter_v2.png")
 lilia_img = pygame.image.load("Sprites/Lilia_v2.png")
-#nikki_img = pygame.image.load("Sprites/Nikki_v2.png")
+nikki_img = pygame.image.load("Sprites/Nikki_v2.png")
 '''dialogue boxes'''
-narrator_box = pygame.image.load("Backgrounds/Dialogue/Narrator_Box.png")
-you_talk = pygame.image.load("Backgrounds/Dialogue/You_Dialogue.png")
-child_talk = pygame.image.load("Backgrounds/Dialogue/Child_Dialogue.png")
-emma_talk = pygame.image.load("Backgrounds/Dialogue/Emma_Dialogue.png")
-mason_talk = pygame.image.load("Backgrounds/Dialogue/Mason_Dialogue.png")
-peter_talk = pygame.image.load("Backgrounds/Dialogue/Peter_Dialogue.png")
-lilia_talk = pygame.image.load("Backgrounds/Dialogue/Lilia_Dialogue.png")
+narrator_box = pygame.image.load("Dialogue_Boxes/Narrator_Box.png")
+you_talk = pygame.image.load("Dialogue_Boxes/You_Dialogue.png")
+child_talk = pygame.image.load("Dialogue_Boxes/Child_Dialogue.png")
+emma_talk = pygame.image.load("Dialogue_Boxes/Emma_Dialogue.png")
+mason_talk = pygame.image.load("Dialogue_Boxes/Mason_Dialogue.png")
+peter_talk = pygame.image.load("Dialogue_Boxes/Peter_Dialogue.png")
+lilia_talk = pygame.image.load("Dialogue_Boxes/Lilia_Dialogue.png")
+nikki_talk = pygame.image.load("Dialogue_Boxes/Nikki_Dialogue.png")
 '''backgrounds'''
 op_back = pygame.image.load("Backgrounds/Opening_Background.png")
 storefront = pygame.image.load("Backgrounds/Ikea_Storefront.png")
@@ -76,9 +77,9 @@ class User(pygame.sprite.Sprite):
     self.defense = 15
     self.health = 50
 
-  def draw(self):
+  def draw(self,x=20,y=200):
     '''blit the avatar on the screen'''
-    display.blit(self.image, (20,200))
+    display.blit(self.image, (x,y))
 
   def attack(self, opponent):
     '''single attack opponent'''
@@ -253,7 +254,7 @@ class Manager(pygame.sprite.Sprite):
 
   def draw(self):
     '''blit the avatar on screen'''
-    display.blit(self.image, (200,200))
+    display.blit(self.image, (20,200))
 
   def attack(self):
     '''single attack the user'''
@@ -287,7 +288,7 @@ emma = Employee1(emma_img, 12)
 mason = Employee1(mason_img, 12)
 peter = Employee2(peter_img, 25)
 lilia = Employee3(lilia_img, 30)
-#nikki = Manager(nikki_img)
+nikki = Manager(nikki_img)
 
 def text_messages(text,font):
   '''Render the text in color and return the rectangle'''
@@ -455,7 +456,7 @@ def scene15():
   boy.draw()
   display.blit(narrator_box, (0,300))
   message_display("Welcome to your first fight", 60, 390)
-  message_display("You must be quick!(Keep hitting the arrow keys)", 60, 420)
+  message_display("You must be quick!(Keep spamming the arrow keys)", 60, 420)
   message_display("Or the opponent will keep attacking!!!", 60, 450)
   pygame.display.update()
 
@@ -988,6 +989,209 @@ def scene86():
   message_display("F R E E D O M", 60, 400)
   pygame.display.update()
 
+def scene87():
+  display.blit(exit_back, (0,0))
+  you.draw(40,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  message_display("(Don't hit SPACE until...)", 60, 425)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(80,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(100,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(150,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit",60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(200,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+
+def scene88():
+  display.blit(exit_back, (0,0))
+  you.draw(200,200)
+  display.blit(nikki_talk, (0,300))
+  message_display("HOLD IT",60, 400)
+  pygame.display.update()
+  you.atk = 10
+
+def scene89():
+  display.blit(exit_back, (0,0))
+  you.draw(200,200)
+  display.blit(nikki_talk, (0,300))
+  message_display("Where do you think you're going?!", 60, 400)
+  pygame.display.update()
+
+def scene90():
+  display.blit(exit_back, (0,0))
+  you.draw(200,200)
+  nikki.draw()
+  display.blit(nikki_talk, (0,300))
+  message_display("Nobody is ever allowed to leave", 60, 400)
+  pygame.display.update()
+
+def scene91():
+  display.blit(exit_back, (0,0))
+  you.draw(200,200)
+  nikki.draw()
+  display.blit(you_talk, (0,300))
+  message_display("We'll see about that", 60, 400)
+  pygame.display.update()
+
+def scene92():
+  '''final boss fight: the developer~'''
+  display.fill(black)
+  you.draw(200,200)
+  nikki.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Make your choice: ", 60, 400)
+  pygame.display.update()
+  time.sleep(2)
+
+def scene94():
+  display.blit(exit_back, (0,0))
+  you.draw(200,200)
+  display.blit(you_talk(0,300))
+  message_display("I can finally leave", 60, 400)
+  pygame.display.update()
+
+def scene95():
+  display.blit(exit_back, (0,0))
+  you.draw(250,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(300,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(350,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(400,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(450,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(500,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(550,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(600,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(650,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(700,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(750,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(770,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(790,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+  display.blit(exit_back, (0,0))
+  you.draw(800,200)
+  display.blit(narrator_box, (0,300))
+  message_display("You make your way towards to exit", 60, 400)
+  pygame.display.update()
+  time.sleep(1)
+
+def scene96():
+  display.blit(op_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("The sunlight on my face and the refreshing wind...", 60, 400)
+  pygame.display.update()
+
+
+def scene97():
+  display.blit(op_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("I thought I would never see the light again", 60, 400)
+  pygame.display.update
+
+def scene98():
+  display.blit(op_back, (0,0))
+  you.draw()
+  display.blit(you_talk, (0,300))
+  message_display("10/10, would do again", 60, 400)
+  pygame.display.update()
+
+def scene99():
+  display.blit(op_back, (0,0))
+  you.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Congrats on winnning the game!",60, 400)
+  pygame.display.update()
+
+def scene100():
+  display.blit(op_back, (0,0))
+  you.draw()
+  display.blit(narrator_box, (0,300))
+  message_display("Thanks for playing!", 60, 400)
+  pygame.display.update()
+
 #game loop escape
 escaped = False
 
@@ -1227,6 +1431,44 @@ while not escaped:
     scene85()
   elif count == 86:
     scene86()
+  elif count == 87:
+    scene87()
+    count  += 1
+  elif count == 88:
+    scene88()
+  elif count == 89:
+    scene89()
+  elif count == 90:
+    scene90()
+  elif count == 91:
+    scene91()
+  elif count == 92:
+    scene92()
+    count += 1
+  elif count == 93:
+    nikki_choice()
+    choice(key, nikki)
+    if nikki.health <= 0:
+      win_fight()
+      count += 1
+    if you.health <= 0:
+      count = 500
+  elif count == 94:
+    scene94()
+  elif count == 95:
+    scene95()
+  elif count == 96:
+    scene96()
+  elif count == 97:
+    scene97()
+  elif count == 98:
+    scene98()
+  elif count == 99:
+    scene99()
+  elif count == 100:
+    scene100()
+    time.sleep(15)
+    escaped = True
   elif count == 500:
     no_health()
 
