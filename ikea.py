@@ -273,11 +273,11 @@ class Manager(pygame.sprite.Sprite):
     pygame.display.update()
     time.sleep(2)
 
-  #def heal(self):
-    #self.health += 5
-    #display.blit(narrator_box, (0,300)
-    #message_display("Nikki Heals!", 60, 400)
-    #message_display(f"Nikki's health is now {self.health}!", 60, 425)
+  def heal(self):
+    self.health += 5
+    display.blit(narrator_box, (0,300))
+    message_display("Nikki Heals!", 60, 400)
+    message_display(f"Nikki's health is now {self.health}!", 60, 425)
 
 #class assignments
 you = User()
@@ -1193,4 +1193,5 @@ if you.health <= 0:
   no_health()
   time.sleep(10)
 
+pygame.quit()
 quit()
