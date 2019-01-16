@@ -344,8 +344,8 @@ def win_fight():
 def no_health():
   display.fill(black)
   message_display("You Lose", 350, 250)
-  message_display("Hit the Spacebar to play again", 350, 300)
-  message_display("If Not, Hit the X in the corner to exit", 350, 320)
+  message_display("Hit the Spacebar to play again", 250, 300)
+  message_display("If Not, Hit the X in the corner to exit", 250, 320)
   pygame.display.update()
   count = 0
 
@@ -354,31 +354,37 @@ def scene1():
   display.blit(op_back,(0,0))
   display.blit(narrator_box, (0,300))
   message_display("It was a bright and sunny day.", 60, 400)
+  pygame.display.update()
 
 def scene2():
   '''opening introduction'''
   display.blit(op_back, (0,0))
   display.blit(narrator_box, (0,300))
   message_display("A perfect day for furniture shopping.", 60, 400)
+  pygame.display.update()
 
 def scene3():
   '''Cue Ikea'''
   display.blit(storefront, (0,0))
+  pygame.display.update()
 
 def scene4():
   '''More Introduction'''
   display.blit(storefront, (0,0)) 
   display.blit(narrator_box, (0,300))
   message_display("Ikea: The best place for interior decorating", 60, 400)
+  pygame.display.update()
 
 def scene5():
   '''First Map'''
   display.fill(black)
   display.blit(entrance, (0,0))
+  pygame.display.update()
 
 def scene6():
   '''Introduction to Plot Scene'''
   display.blit(entrance_back, (0,0))
+  pygame.display.update()
 
 def scene7():
   '''Scene 6 continued'''
@@ -386,6 +392,7 @@ def scene7():
   you.draw()
   display.blit(you_talk,(0,300))
   message_display("Wow, I sure hope I don't get lost in here", 60, 400)
+  pygame.display.update()
 
 def scene8():
   '''Scene 6 Continued'''
@@ -393,15 +400,18 @@ def scene8():
   you.draw()
   display.blit(you_talk,(0,300))
   message_display("It's not like I'm going to have to fight anyone...", 60, 400)
+  pygame.display.update()
 
 def scene9():
   '''Living Room Map'''
   display.fill(black)
   display.blit(living_room,(0,0))
+  pygame.display.update()
 
 def scene10():
   '''First fight/plot point background'''
   display.blit(living_back, (0,0))
+  pygame.display.update()
 
 def scene11():
   '''More narration for fight'''
@@ -409,6 +419,7 @@ def scene11():
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("Hmm, This couch is nice..", 60, 400)
+  pygame.display.update()
 
 def scene12():
   '''Still more narration'''
@@ -416,6 +427,7 @@ def scene12():
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("Must..resist..impulsive buying...", 60, 400)
+  pygame.display.update()
 
 def scene13():
   '''Right before fight scene'''
@@ -424,6 +436,7 @@ def scene13():
   boy.draw()
   display.blit(you_talk, (0,300))
   message_display("Hey Kid, I was looking at that", 60, 400)
+  pygame.display.update()
 
 def scene14():
   '''Again, right before fight'''
@@ -432,6 +445,7 @@ def scene14():
   boy.draw()
   display.blit(child_talk, (0,300))
   message_display("Mine now. Fight me, you anime wannabe.", 60, 400)
+  pygame.display.update()
 
 def scene15():
   '''introduction to fighting'''
@@ -442,6 +456,7 @@ def scene15():
   message_display("Welcome to your first fight", 60, 390)
   message_display("You must be quick!(Keep hitting the arrow keys)", 60, 420)
   message_display("Or the opponent will keep attacking!!!", 60, 450)
+  pygame.display.update()
 
 def scene16():
   '''intro continued'''
@@ -449,10 +464,11 @@ def scene16():
   you.draw()
   boy.draw()
   display.blit(narrator_box, (0,300))
-  message_display("Hit the Up-Arrow Key to Attack.", 60, 375)
-  message_display("Hit the Down-Arrow Key to Defend", 60, 420)
-  message_display("Hit the Right-Arrow Key to Flee", 60, 465)
-  message_display("Hit the space bar to continue")
+  message_display("Hit the Up-Arrow Key to Attack.", 60, 370)
+  message_display("Hit the Down-Arrow Key to Defend.", 60, 400)
+  message_display("Hit the Right-Arrow Key to Flee.", 60, 430)
+  message_display("(Hit the space bar to continue and start the fight)", 55, 460)
+  pygame.display.update()
 
 def scene17():
   '''choice input'''
@@ -461,25 +477,27 @@ def scene17():
   boy.draw()
   display.blit(narrator_box,(0,300))
   message_display("Make your choice:", 60, 400)
+  pygame.display.update()
 
 def scene19():
   '''After Fight'''
-  global count
   display.blit(living_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("Phew, that was easy", 60, 400)
   message_display("Sure hope I don't have to do that again", 60, 420)
-  count += 1
+  pygame.display.update()
 
 def scene20():
   '''Next map'''
   display.fill(black)
   display.blit(dining, (0,0))
+  pygame.display.update()
 
 def scene21():
   '''Dining Room'''
   display.blit(dining_back, (0,0))
+  pygame.display.update()
 
 def scene22():
   '''Dining Room narration'''
@@ -487,6 +505,7 @@ def scene22():
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("I definitely need another table", 60, 400)
+  pygame.display.update()
 
 def scene23():
   '''More narration'''
@@ -495,6 +514,7 @@ def scene23():
   girl.draw()
   display.blit(child_talk, (0,300))
   message_display("What a loser! You're looking at tables.", 60, 400)
+  pygame.display.update()
 
 def scene24():
   '''yet more narration'''
@@ -503,7 +523,8 @@ def scene24():
   girl.draw()
   display.blit(you_talk, (0,300))
   message_display("Are you kidding me??", 60, 400)
-  message_display("Where are all these kids coming from???", 60, 400)
+  message_display("Where are all these kids coming from???", 60, 425)
+  pygame.display.update()
 
 def scene25():
   '''second fight scene'''
@@ -512,24 +533,26 @@ def scene25():
   girl.draw()
   display.blit(narrator_box, (0,300))
   message_display("Make your choice: ", 60, 400)
+  pygame.display.update()
 
 def scene27():
   '''After fight scene'''
-  global count
   display.blit(dining_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("This time I really hope I don't have to do that again", 60, 400)
-  count += 1
+  pygame.display.update()
 
 def scene28():
   '''next map'''
   display.fill(black)
   display.blit(bedroom, (0,0))
+  pygame.display.update()
 
 def scene29():
   '''bedrooms'''
   display.blit(bed_back, (0,0))
+  pygame.display.update()
 
 def scene30():
   '''gift from the developer'''
@@ -537,6 +560,7 @@ def scene30():
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display("Congratulations on winning your first two fights!", 60, 400)
+  pygame.display.update()
 
 def scene31():
   '''gift from the developer'''
@@ -544,6 +568,7 @@ def scene31():
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display("Since you did so well, here's a gift! :)", 60, 400)
+  pygame.display.update()
   you.health = 60
   you.atk = 3
 
@@ -554,6 +579,7 @@ def scene32():
   display.blit(narrator_box, (0,300))
   message_display(f"Health is now {you.health}", 60, 390)
   message_display(f"Attack Power is now {you.atk}", 60, 420)
+  pygame.display.update()
 
 def scene33():
   '''good luck'''
@@ -563,6 +589,7 @@ def scene33():
   message_display("To be able to go back home, you must fight", 60, 390)
   message_display("your way out", 60, 420)
   message_display("Good Luck, grasshopper", 60, 450)
+  pygame.display.update()
 
 def scene34():
   '''nap and replenish energy'''
@@ -571,15 +598,18 @@ def scene34():
   display.blit(narrator_box, (0,300))
   message_display("For now, you nap on the super comfy bed", 60, 390)
   message_display("to replenish your energy", 60, 420)
+  pygame.display.update()
 
 def scene35():
   '''bedroom storage map'''
   display.fill(black)
   display.blit(bedroom_storage, (0,0))
+  pygame.display.update()
 
 def scene36():
   '''bedroom storage background'''
   display.blit(bstorage_back, (0,0))
+  pygame.display.update()
 
 def scene37():
   '''bstorage narration'''
@@ -587,6 +617,7 @@ def scene37():
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("owo what's this", 60, 400)
+  pygame.display.update()
 
 def scene38():
   '''more bstorage narration'''
@@ -594,6 +625,7 @@ def scene38():
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("I could fit so many things in these...", 60, 400)
+  pygame.display.update()
 
 def scene39():
   '''yet more bstorage narration'''
@@ -603,6 +635,7 @@ def scene39():
   message_display("My anime figurine collection...", 60, 390)
   message_display("My Fall Out Boy posters...", 60, 420)
   message_display("My Doctor Who merch...", 60, 450)
+  pygame.display.update()
 
 def scene40():
   '''even more yet more bstorage narration'''
@@ -611,6 +644,7 @@ def scene40():
   emma.draw()
   display.blit(emma_talk, (0,300))
   message_display("You look like you would be a good employee here", 60, 400)
+  pygame.display.update()
 
 def scene41():
   '''still more even more yet more narration'''
@@ -619,9 +653,11 @@ def scene41():
   emma.draw()
   display.blit(you_talk, (0,300))
   message_display("Um No, I don't think so", 60, 400)
+  pygame.display.update()
 
 def scene42():
   scene40()
+  pygame.display.update()
 
 def scene43():
   '''right before fight scene'''
@@ -630,6 +666,7 @@ def scene43():
   emma.draw()
   display.blit(you_talk, (0,300))
   message_display("Why can't people leave me alone today??", 60, 400)
+  pygame.display.update()
 
 def scene44():
   '''third fight scene'''
@@ -638,6 +675,7 @@ def scene44():
   emma.draw()
   display.blit(narrator_box, (0,300))
   message_display("Make your choice: ", 60, 400)
+  pygame.display.update()
 
 def scene46():
   '''after third fight'''
@@ -646,15 +684,18 @@ def scene46():
   display.blit(you_talk, (0,300))
   message_display("Maybe it's time I dye my hair a normal color...", 60, 400)
   message_display("People will finally leave me alone.", 60, 430)
+  pygame.display.update()
 
 def scene47():
   '''bathroom map'''
   display.fill(black)
   display.blit(bathroom, (0,0))
+  pygame.display.update()
 
 def scene48():
   '''bathroom background'''
   display.blit(bath_back1, (0,0))
+  pygame.display.update()
 
 def scene49():
   '''bathroom narration'''
@@ -662,6 +703,7 @@ def scene49():
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("OMG This curtain is totes cute.", 60, 400)
+  pygame.display.update()
 
 def scene50():
   '''more bathroom narration'''
@@ -670,6 +712,7 @@ def scene50():
   display.blit(you_talk, (0,300))
   message_display("Hmm but my bathroom walls are green..", 60, 400)
   message_display("It'd look like too much Christmas.", 60, 430)
+  pygame.display.update()
 
 def scene51():
   '''even more bathroom narration'''
@@ -677,6 +720,7 @@ def scene51():
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("Maybe I need some professional help.",  60, 400)
+  pygame.display.update()
 
 def scene52():
   '''mason appears for even more narration'''
@@ -685,6 +729,7 @@ def scene52():
   mason.draw()
   display.blit(mason_talk, (0,300))
   message_display("Did you say professional help? XD!", 60, 400)
+  pygame.display.update()
 
 def scene53():
   '''right before fight scene'''
@@ -692,8 +737,9 @@ def scene53():
   you.draw()
   mason.draw()
   display.blit(you_talk, (0,300))
-  message_display("AAAAAAAAAAAAAAAAAAAAAA", 60, 390)
-  message_display("It's time to stop!", 60, 420)
+  message_display("AAAAAAAAAAAAAAAAAAAAAA", 60, 400)
+  message_display("It's time to stop!", 60, 425)
+  pygame.display.update()
 
 def scene54():
   '''fourth fight scene'''
@@ -702,6 +748,7 @@ def scene54():
   mason.draw()
   display.blit(narrator_box, (0,300))
   message_display("Make your choice: ", 60, 400)
+  pygame.display.update()
 
 def scene56():
   '''after fourth fight'''
@@ -710,15 +757,18 @@ def scene56():
   display.blit(you_talk, (0,300))
   message_display("I'm starting to think I'm being attacked", 60, 390)
   message_display("I'd better get out of here ASAP", 60, 420)
+  pygame.display.update()
 
 def scene57():
   '''workspace map'''
   display.fill(black)
   display.blit(workspaces, (0,0))
+  pygame.display.update()
 
 def scene58():
   '''workspace background'''
   display.blit(work_back, (0,0))
+  pygame.display.update()
 
 def scene59():
   '''developer's gift!'''
@@ -726,12 +776,14 @@ def scene59():
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display("Congratulations on getting halfway through!", 60, 400)
+  pygame.display.update()
 
 def scene60():
   display.blit(work_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display("Have this gift as a token!", 60, 400)
+  pygame.display.update()
   you.health = 70
   you.atk = 7
 
@@ -741,6 +793,7 @@ def scene61():
   display.blit(narrator_box, (0,300))
   message_display(f"Health is now {you.health}", 60, 390)
   message_display(f"Attack Power is now {you.atk}", 60, 420)
+  pygame.display.update()
 
 def scene62():
   '''developer's gift!!'''
@@ -748,29 +801,34 @@ def scene62():
   you.draw()
   display.blit(narrator_box, (0,300))
   message_display("Being in the workspaces fills you with productivity", 60, 400)
+  pygame.display.update()
 
 def scene63():
   '''kitchen map'''
   display.fill(black)
   display.blit(kitchen, (0,0))
+  pygame.display.update()
 
 def scene64():
   '''kitchen background'''
   display.blit(kitchen_back, (0,0))
+  pygame.display.update()
 
 def scene65():
   '''kitchen narration'''
   display.blit(kitchen_back, (0,0))
   you.draw()
-  display.blit(you_talk, (0,0))
+  display.blit(you_talk, (0,300))
   message_display("If only I had a significant other that cooked...", 60, 400)
+  pygame.display.update()
 
 def scene66():
   '''more kitchen narration'''
   display.blit(kitchen_back, (0,0))
   you.draw()
-  display.blit(you_talk, (0,0))
+  display.blit(you_talk, (0,300))
   message_display("I'd decorate my own kitchen better", 60, 400)
+  pygame.display.update()
 
 def scene67():
   '''even more narration'''
@@ -779,6 +837,7 @@ def scene67():
   peter.draw()
   display.blit(peter_talk, (0,300))
   message_display("Oh, I'll help you decorate! ;)", 60, 400)
+  pygame.display.update()
 
 def scene68():
   '''yet some more narration'''
@@ -787,6 +846,7 @@ def scene68():
   peter.draw()
   display.blit(you_talk, (0,300))
   message_display("No thank you! Gotta blast!", 60, 400)
+  pygame.display.update()
 
 def scene69():
   '''right before fight scene 5'''
@@ -795,6 +855,7 @@ def scene69():
   peter.draw()
   display.blit(peter_talk, (0,300))
   message_display("Awww, but I promise you'll have a good time *pouts*", 60, 400)
+  pygame.display.update()
 
 def scene70():
   '''fifth fight scene commence!!!'''
@@ -803,6 +864,7 @@ def scene70():
   peter.draw()
   display.blit(narrator_box, (0,300))
   message_display("Make your choice: ", 60, 400)
+  pygame.display.update()
 
 def scene72():
   '''after fifth fight scene'''
@@ -810,6 +872,7 @@ def scene72():
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("Where's an exit when you need one?!", 60, 400)
+  pygame.display.update()
 
 def scene73():
   '''after fifth fight scene part deux'''
@@ -817,7 +880,8 @@ def scene73():
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("*I'm in danger*", 60, 400)
-  message_display("I've never seen my life flash before my eyes like today", 60, 400)
+  message_display("I've never seen my life flash before my eyes like today", 60, 425)
+  pygame.display.update()
 
 def scene74():
   '''after fifth fight scene part tre'''
@@ -825,20 +889,24 @@ def scene74():
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("Except maybe that one time before a history test XD", 60, 400)
+  pygame.display.update()
 
 def scene75():
   '''children's ikea map'''
   display.fill(black)
   display.blit(childrens, (0,0))
+  pygame.display.update()
 
 def scene76():
   display.blit(childrens_back, (0,0))
+  pygame.display.update()
 
 def scene77():
   display.blit(childrens_back, (0,0))
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("I wish I was still a kid...", 60, 400)
+  pygame.display.update()
   you.atk = 8 
 
 def scene78():
@@ -846,6 +914,7 @@ def scene78():
   you.draw()
   display.blit(you_talk, (0,300))
   message_display("Imagine having a bunk bed that looks like a house", 60, 400)
+  pygame.display.update()
 
 def scene79():
   display.blit(childrens_back, (0,0))
@@ -853,6 +922,7 @@ def scene79():
   lilia.draw()
   display.blit(lilia_talk, (0,300))
   message_display("If you stay here forever, you can have one!", 60, 400)
+  pygame.display.update()
 
 def scene80():
   display.blit(childrens_back, (0,0))
@@ -860,6 +930,7 @@ def scene80():
   lilia.draw()
   display.blit(lilia_talk, (0,300))
   message_display("Please stay. Stay with us. Forever", 60, 400)
+  pygame.display.update()
 
 def scene81():
   display.blit(childrens_back, (0,0))
@@ -867,6 +938,7 @@ def scene81():
   lilia.draw()
   display.blit(you_talk, (0,300))
   message_display("Yikes, clingy much?", 60, 400)
+  pygame.display.update()
 
 def scene81():
   display.blit(childrens_back,(0,0))
@@ -874,6 +946,7 @@ def scene81():
   lilia.draw()
   display.blit(you_talk, (0,300))
   message_display("That's a no from me, fam", 60, 400)
+  pygame.display.update()
 
 def scene82():
   display.fill(black)
@@ -881,13 +954,14 @@ def scene82():
   lilia.draw()
   display.blit(narrator_box, (0,300))
   message_display("Make your choice: ", 60, 400)
+  pygame.display.update()
 
 #game loop escape
 escaped = False
 
 #game loop
 while not escaped:
-  clock.tick(5)
+  clock.tick(4)
 
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
@@ -898,12 +972,10 @@ while not escaped:
   if key[pygame.K_SPACE]:
     print(f"advanced one count {count}")
     count += 1
-    pygame.display.update()
   
   if count == 0:
     message_display("Hit SPACE to continue", 60, 400)
     pygame.display.update()
-    count += 1
   elif count == 1:
     scene1()
   elif count == 2:
@@ -936,11 +1008,9 @@ while not escaped:
     scene15()
   elif count == 16:
     scene16()
-    pygame.display.update()
   elif count == 17:
     scene17()
-    pygame.display.update()
-    time.sleep(1)
+    time.sleep(2)
     count += 1
   elif count == 18:
     opponent_choice(boy)
@@ -952,7 +1022,6 @@ while not escaped:
       no_health()
   elif count == 19:
     scene19()
-    pygame.display.update()
   elif count == 20:
     scene20()
   elif count == 21:
@@ -965,7 +1034,6 @@ while not escaped:
     scene24()
   elif count == 25:
     scene25()
-    pygame.display.update()
     time.sleep(2)
     count += 1
   elif count == 26:
@@ -978,7 +1046,6 @@ while not escaped:
       no_health()
   elif count == 27:
     scene27()
-    pygame.display.update()
   elif count == 28:
     scene28()
   elif count == 29:
@@ -1013,7 +1080,6 @@ while not escaped:
     scene43()
   elif count == 44:
     scene44()
-    pygame.display.update()
     time.sleep(2)
     count += 1
   elif count == 45:
@@ -1042,7 +1108,6 @@ while not escaped:
     scene53()
   elif count == 54:
     scene54()
-    pygame.display.update()
     time.sleep(2)
     count += 1
   elif count == 55:
@@ -1083,8 +1148,6 @@ while not escaped:
     scene69()
   elif count == 70:
     scene70()
-    pygame.display.update()
-    count += 1
   elif count == 71:
     opponent_choice(peter)
     choice(key, peter)
@@ -1115,8 +1178,6 @@ while not escaped:
     scene81()
   elif count == 82:
     scene82()
-    pygame.display.update()
-    count += 1
   elif count == 83:
     opponent_choice(lilia)
     choice(key, lilia)
