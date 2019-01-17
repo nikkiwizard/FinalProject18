@@ -1009,7 +1009,7 @@ def scene87():
   you.draw(40,200)
   display.blit(narrator_box, (0,300))
   message_display("You make your way towards to exit", 60, 400)
-  message_display("(Don't hit SPACE until...)", 60, 425)
+  message_display("(Don't hit SPACE...)", 60, 425)
   pygame.display.update()
   time.sleep(1)
   display.blit(exit_back, (0,0))
@@ -1043,6 +1043,7 @@ def scene88():
   you.draw(200,200)
   display.blit(nikki_talk, (0,300))
   message_display("HOLD IT",60, 400)
+  message_display("(Hit SPACE to continue)", 60, 440)
   pygame.display.update()
   you.atk = 10
 
@@ -1086,7 +1087,7 @@ def scene94():
   '''you might be able to leave this time'''
   display.blit(exit_back, (0,0))
   you.draw(200,200)
-  display.blit(you_talk(0,300))
+  display.blit(you_talk, (0,300))
   message_display("I can finally leave", 60, 400)
   pygame.display.update()
 
@@ -1490,6 +1491,7 @@ while not escaped:
     scene95()
   elif count == 96:
     scene96()
+    count += 1
   elif count == 97:
     scene97()
   elif count == 98:
