@@ -15,6 +15,6 @@ Controls:
  
  Relevant Documents:
   - Sources (Including how I learned to use PyGame for my graphics)
-  -
+    https://docs.google.com/document/d/1ZB77aqG8UsxEqJpam9fCuo6_DFq0Wi7iD0be7eSbYpA/edit?usp=sharing
   - Flowchart of how my code works
   -
