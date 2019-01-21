@@ -1197,7 +1197,7 @@ def scene99():
   display.blit(op_back, (0,0))
   you.draw()
   display.blit(narrator_box, (0,300))
-  message_display("Congrats on winnning the game!",60, 400)
+  message_display("Congrats on winning the game!",60, 400)
   pygame.display.update()
 
 def scene100():
