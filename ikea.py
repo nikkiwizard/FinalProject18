@@ -1160,23 +1160,12 @@ def scene95():
   pygame.display.update()
   time.sleep(1)
   display.blit(exit_back, (0,0))
-  you.draw(770,200)
+  you.draw(765,200)
   display.blit(narrator_box, (0,300))
   message_display("You make your way towards to exit", 60, 400)
   pygame.display.update()
   time.sleep(1)
   display.blit(exit_back, (0,0))
-  you.draw(790,200)
-  display.blit(narrator_box, (0,300))
-  message_display("You make your way towards to exit", 60, 400)
-  pygame.display.update()
-  time.sleep(1)
-  display.blit(exit_back, (0,0))
-  you.draw(800,200)
-  display.blit(narrator_box, (0,300))
-  message_display("You make your way towards to exit", 60, 400)
-  pygame.display.update()
-  time.sleep(1)
 
 def scene96():
   '''thank jesus'''
@@ -1489,9 +1478,9 @@ while not escaped:
     scene94()
   elif count == 95:
     scene95()
+    count += 1
   elif count == 96:
     scene96()
-    count += 1
   elif count == 97:
     scene97()
   elif count == 98:
